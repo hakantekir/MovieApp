@@ -142,7 +142,6 @@
 		72EB01A5299E39D700DF6C24 /* URLSessionAutoLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionAutoLogging.swift; sourceTree = "<group>"; };
 		D1AC819628F69C4500E5B0AE /* OnFirstAppearModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnFirstAppearModifier.swift; sourceTree = "<group>"; };
 		F856462E28D12DC90015D3DF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		F856463028D12DDD0015D3DF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F856463128D12DE80015D3DF /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -522,7 +521,6 @@
 			knownRegions = (
 				en,
 				Base,
-				de,
 				tr,
 			);
 			mainGroup = 2FCDE0E92565722400203445;
@@ -727,7 +725,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				F856462E28D12DC90015D3DF /* en */,
-				F856463028D12DDD0015D3DF /* de */,
 				F856463128D12DE80015D3DF /* tr */,
 			);
 			name = Localizable.strings;
