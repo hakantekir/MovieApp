@@ -18,21 +18,20 @@ enum NetworkError: Error, Equatable {
     
     var errorCode: Int {
         switch self {
-        case .httpError(let error, _):
-            return error.rawValue
-        case .unknown(let error):
-            return error.code
-        case .customError(let code, _, _):
-            return code
-        case .mappingFailed:
-            return 0
-        case .badResponse:
-            return 0
-        case .badURL:
-            return 0
+            case .httpError(let error, _):
+                return error.rawValue
+            case .unknown(let error):
+                return error.code
+            case .customError(let code, _, _):
+                return code
+            case .mappingFailed:
+                return 0
+            case .badResponse:
+                return 0
+            case .badURL:
+                return 0
         }
     }
-    
     var response: ErrorResponse? {
         getResponse()
     }
@@ -41,14 +40,14 @@ enum NetworkError: Error, Equatable {
 extension NetworkError {
     private func getResponse() -> ErrorResponse? {
         switch self {
-        case .httpError(_, let data), .customError(_, _, let data):
-            guard let data = data else {
+            case .httpError(_, let data), .customError(_, _, let data):
+                guard let data = data else {
+                    return nil
+                }
+                let response = try? JSONDecoder().decode(ErrorResponse.self, from: data)
+                return response
+            case .badResponse, .mappingFailed, .unknown, .badURL:
                 return nil
-            }
-            let response = try? JSONDecoder().decode(ErrorResponse.self, from: data)
-            return response
-        case .badResponse, .mappingFailed, .unknown, .badURL:
-            return nil
         }
     }
 }
