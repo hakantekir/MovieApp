@@ -14,16 +14,15 @@ struct LaunchView: View {
             Image("launchBackground")
                 .resizable()
                 .scaledToFill()
-                .ignoresSafeArea()
+                .frame(minHeight: 0)
             Image("launchIcon")
             VStack {
                 Spacer()
                 Text("We 🤍 movie")
                     .foregroundColor(.white)
-                Spacer()
-                    .frame(height: 36)
+                    .padding(.bottom, 36)
             }
-        }
+        }.ignoresSafeArea()
     }
 }
 
