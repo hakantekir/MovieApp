@@ -14,3 +14,9 @@
 "source_camera" = "Camera";
 "source_saved_album" = "Saved Album";
 "source_select_title" = "Select a source";
+
+"email" = "Email";
+"password" = "Password";
+"forgot_password" = "Forgot Password";
+"login" = "Login";
+"register" = "Register";

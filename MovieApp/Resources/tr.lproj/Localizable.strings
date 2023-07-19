@@ -14,3 +14,9 @@
 "source_camera" = "Kamera";
 "source_saved_album" = "Kaydedilmiş Albüm";
 "source_select_title" = "Bir kaynak seç";
+
+"email" = "E-Posta";
+"password" = "Şifre";
+"forgot_password" = "Şifremi Unuttum";
+"login" = "Giriş";
+"register" = "Kayıt ol";
