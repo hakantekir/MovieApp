@@ -15,7 +15,9 @@ struct LaunchView: View {
                 .resizable()
                 .scaledToFill()
                 .frame(minHeight: 0)
+
             Image("launchIcon")
+
             VStack {
                 Spacer()
                 Text("We 🤍 movie")

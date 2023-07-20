@@ -16,10 +16,8 @@ struct MainView: View {
         } else {
             LaunchView()
                 .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        withAnimation {
-                            isActive = true
-                        }
+                    withAnimation(.easeIn(duration: 1).delay(1)) {
+                        isActive = true
                     }
                 }
         }
