@@ -19,4 +19,5 @@
 "password" = "Şifre";
 "forgot_password" = "Şifremi Unuttum";
 "login" = "Giriş";
-"register" = "Kayıt ol";
+"dont_have_account" = "Hesabın yok mu?";
+"register_now" = "Şimdi kayıt ol";

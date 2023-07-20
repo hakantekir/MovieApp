@@ -31,6 +31,10 @@
 		2FCDE1572566AE2700203445 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDE1562566AE2700203445 /* UITableViewExtensions.swift */; };
 		6A42D3812A67BF5100899953 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A42D3802A67BF5100899953 /* LaunchView.swift */; };
 		6A42D3A32A67C38600899953 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A42D3A22A67C38600899953 /* LaunchScreen.storyboard */; };
+		6A2CDA762A6821CF0004D694 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2CDA752A6821CF0004D694 /* ColorExtension.swift */; };
+		6A7204CA2A67FFB900E60B21 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7204C92A67FFB900E60B21 /* LoginView.swift */; };
+		6A7204CC2A6811D100E60B21 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7204CB2A6811D100E60B21 /* RoundedButton.swift */; };
+		6A7204CE2A68128800E60B21 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7204CD2A68128800E60B21 /* LoginTextField.swift */; };
 		720A19F829E6BCF600265401 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720A19F729E6BCF600265401 /* ArrayExtensions.swift */; };
 		7259FCBB299EAD3300BF8309 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F56AE8B256E44F00007D0A2 /* UIViewControllerExtensions.swift */; };
 		7259FCBC299EAD3300BF8309 /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F56AE85256E44730007D0A2 /* UICollectionViewExtensions.swift */; };
@@ -137,6 +141,10 @@
 		2FCDE1562566AE2700203445 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		6A42D3802A67BF5100899953 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		6A42D3A22A67C38600899953 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6A2CDA752A6821CF0004D694 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		6A7204C92A67FFB900E60B21 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		6A7204CB2A6811D100E60B21 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		6A7204CD2A68128800E60B21 /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		720A19F729E6BCF600265401 /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		7259FCE4299EAD3300BF8309 /* MovieApp-Pulse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MovieApp-Pulse.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		727273802A1CBAB60050D236 /* MapApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapApplication.swift; sourceTree = "<group>"; };
@@ -331,6 +339,7 @@
 		2FCDE1272566413F00203445 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				6A7204C82A67FFA700E60B21 /* Login */,
 				18CADB2E28A92C80007FC2C8 /* Main */,
 				18CADB3628A93B3F007FC2C8 /* Home */,
 				9D57D89A29BB7DD1002400BB /* Launch */,
@@ -374,8 +383,17 @@
 				72B4409729967738004D1FC5 /* UIImagePickerControllerSourceTypeExtension.swift */,
 				720A19F729E6BCF600265401 /* ArrayExtensions.swift */,
 				72A7BE1B2A1CA5E000D66097 /* URLExtensions.swift */,
+				6A2CDA752A6821CF0004D694 /* ColorExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6A7204C82A67FFA700E60B21 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				6A7204C92A67FFB900E60B21 /* LoginView.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		72A7BE1D2A1CA9B700D66097 /* Constants */ = {
@@ -391,6 +409,8 @@
 			isa = PBXGroup;
 			children = (
 				72B4408F29965134004D1FC5 /* ImagePicker.swift */,
+				6A7204CB2A6811D100E60B21 /* RoundedButton.swift */,
+				6A7204CD2A68128800E60B21 /* LoginTextField.swift */,
 			);
 			path = ViewRepresentables;
 			sourceTree = "<group>";
@@ -669,6 +689,7 @@
 				72A7BE1F2A1CA9C300D66097 /* URLDefinitions.swift in Sources */,
 				2F56AE8C256E44F00007D0A2 /* UIViewControllerExtensions.swift in Sources */,
 				2F56AE86256E44730007D0A2 /* UICollectionViewExtensions.swift in Sources */,
+				6A2CDA762A6821CF0004D694 /* ColorExtension.swift in Sources */,
 				727273812A1CBAB60050D236 /* MapApplication.swift in Sources */,
 				72A7BE1C2A1CA5E000D66097 /* URLExtensions.swift in Sources */,
 				72B4409029965134004D1FC5 /* ImagePicker.swift in Sources */,
@@ -677,6 +698,7 @@
 				18CADB3228A92CDC007FC2C8 /* MainView.swift in Sources */,
 				2F56AE8A256E44BB0007D0A2 /* UICollectionViewCellExtensions.swift in Sources */,
 				72C4BE3E29A6376C0032CFF2 /* AppDelegate.swift in Sources */,
+				6A7204CC2A6811D100E60B21 /* RoundedButton.swift in Sources */,
 				720A19F829E6BCF600265401 /* ArrayExtensions.swift in Sources */,
 				26BCDA2A2579857E00096894 /* UIApplicationExtension.swift in Sources */,
 				72B4409629966B1C004D1FC5 /* NewPhotoPickerView.swift in Sources */,
@@ -697,8 +719,10 @@
 				2F56AE88256E44A10007D0A2 /* UITableViewCellExtensions.swift in Sources */,
 				26BCDA2F2579859500096894 /* UIDeviceExtension.swift in Sources */,
 				A24A05632A667A9700216F15 /* ErrorResponse.swift in Sources */,
+				6A7204CA2A67FFB900E60B21 /* LoginView.swift in Sources */,
 				18CADB3828A93B4F007FC2C8 /* HomeView.swift in Sources */,
 				A24A05592A66726A00216F15 /* HTTPStatus.swift in Sources */,
+				6A7204CE2A68128800E60B21 /* LoginTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

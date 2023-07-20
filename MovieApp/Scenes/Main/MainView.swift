@@ -12,7 +12,7 @@ struct MainView: View {
     @State var isActive = false
     var body: some View {
         if isActive {
-            HomeView()
+            LoginView()
         } else {
             LaunchView()
                 .onAppear {
