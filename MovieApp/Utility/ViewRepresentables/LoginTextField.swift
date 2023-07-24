@@ -36,14 +36,18 @@ struct LoginTextField: View {
                                 .font(.system(size: 17))
                                 .foregroundColor(foregroundColor)
                                 .textContentType(.password)
+                                .keyboardType(.asciiCapable)
                                 .focused($textFocused)
                                 .opacity(isSecure ? 0 : 1)
+                                .autocorrectionDisabled(true)
                             SecureField("", text: $text)
                                 .font(.system(size: 17))
                                 .foregroundColor(foregroundColor)
                                 .textContentType(.password)
+                                .keyboardType(.asciiCapable)
                                 .focused($secureFocused)
                                 .opacity(isSecure ? 1 : 0)
+                                .autocorrectionDisabled(true)
                         }
                         Button {
                             isSecure.toggle()
@@ -60,7 +64,7 @@ struct LoginTextField: View {
                     TextField("", text: $text)
                         .font(.system(size: 17))
                         .foregroundColor(foregroundColor)
-                }  
+                }
             Divider()
                 .frame(height: 1)
                 .overlay(Color.lightGrayBlue)
