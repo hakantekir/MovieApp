@@ -15,7 +15,7 @@ enum NetworkError: Error, Equatable {
     case customError(_ code: Int, _ message: String, _ data: Data? = nil)
     case mappingFailed(data: Data? = nil)
     case badResponse
-    
+
     var errorCode: Int {
         switch self {
             case .httpError(let error, _):

@@ -13,7 +13,7 @@ struct RequestObject {
     let method: HTTPMethod
     var headers: [String: String]?
     var body: Data?
-    
+
     init(url: String,
          method: HTTPMethod = .get,
          headers: [String: String] = [:],
