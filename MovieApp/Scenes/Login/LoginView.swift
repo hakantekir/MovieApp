@@ -44,7 +44,7 @@ extension LoginView {
             LoginTextField(type: .normal,
                            label: L10n.email,
                            text: $email,
-                           foregroundColor: .white
+                           foregroundColor: Asset.Colors.white.swiftUIColor
             )
             .textInputAutocapitalization(.never)
             .keyboardType(.emailAddress)
@@ -58,7 +58,7 @@ extension LoginView {
             LoginTextField(type: .secure,
                            label: L10n.password,
                            text: $password,
-                           foregroundColor: .white
+                           foregroundColor: Asset.Colors.white.swiftUIColor
             )
             .padding(.bottom, 24)
             .keyboardType(.asciiCapable)
@@ -78,7 +78,7 @@ extension LoginView {
                     print("forgot")
                 } label: {
                     Text(L10n.forgotPassword)
-                        .foregroundColor(.white)
+                        .foregroundColor(Asset.Colors.white.swiftUIColor)
                 }
                 .font(.system(size: 12))
                 .padding(.bottom, 48.0)
@@ -86,7 +86,7 @@ extension LoginView {
 
             RoundedButton(label: L10n.login,
                           foregroundColor: Asset.Colors.vibrantBlue.swiftUIColor,
-                          backgroundColor: .white) {
+                          backgroundColor: Asset.Colors.white.swiftUIColor) {
                 print("login")
             }.padding(.bottom, 25)
 
@@ -98,7 +98,7 @@ extension LoginView {
                     print("register")
                 } label: {
                     Text(L10n.registerNow)
-                        .foregroundColor(.white)
+                        .foregroundColor(Asset.Colors.white.swiftUIColor)
                 }
                 .font(.system(size: 12))
             }

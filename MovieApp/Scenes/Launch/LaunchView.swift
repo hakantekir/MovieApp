@@ -21,7 +21,7 @@ struct LaunchView: View {
             VStack {
                 Spacer()
                 Text("We 🤍 movie")
-                    .foregroundColor(.white)
+                    .foregroundColor(Asset.Colors.white.swiftUIColor)
                     .padding(.bottom, 36)
             }
         }.ignoresSafeArea()
