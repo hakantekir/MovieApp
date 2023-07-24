@@ -11,12 +11,12 @@ import Foundation
 enum HTTPStatus: Int, Error {
     // Default
     case notValidCode = 0
-    
+
     // 1xx Informational
     case `continue` = 100
     case switchingProtocols = 101
     case processing = 102
-    
+
     // 2xx Success
     case okay = 200
     case created = 201
@@ -28,7 +28,7 @@ enum HTTPStatus: Int, Error {
     case multiStatus = 207
     case alreadyReported = 208
     case IMUsed = 226
-    
+
     // 3xx Redirection
     case multipleChoices = 300
     case movedPermanently = 301
@@ -39,7 +39,7 @@ enum HTTPStatus: Int, Error {
     case switchProxy = 306
     case temporaryRedirect = 307
     case permenantRedirect = 308
-    
+
     // 4xx Client Error
     case badRequest = 400
     case unauthorized = 401
@@ -71,7 +71,7 @@ enum HTTPStatus: Int, Error {
     case connectionClosedWithoutResponse = 444
     case unavailableForLegalReasons = 451
     case clientClosedRequest = 499
-    
+
     // 5xx Server Error
     case internalServerError = 500
     case notImplemented = 501
