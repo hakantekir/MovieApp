@@ -9,8 +9,18 @@
 import SwiftUI
 
 struct MainView: View {
+    @State var isActive = false
     var body: some View {
-        HomeView()
+        if isActive {
+            HomeView()
+        } else {
+            LaunchView()
+                .onAppear {
+                    withAnimation(.easeIn(duration: 1).delay(1)) {
+                        isActive = true
+                    }
+                }
+        }
     }
 }
 
