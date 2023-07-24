@@ -15,12 +15,12 @@ struct LoginView: View {
         ScrollView(showsIndicators: false) {
             ScrollViewReader { reader in
                 ZStack {
-                    Image("loginBackground")
+                    Asset.Images.loginBackground.swiftUIImage
                         .resizable()
                         .scaledToFill()
 
                     VStack {
-                        Image("launchIcon")
+                        Asset.Images.launchIcon.swiftUIImage
                             .padding(.bottom, 91.0)
 
                         loginTextFields(reader: reader)
@@ -33,7 +33,7 @@ struct LoginView: View {
             }
         }
         .ignoresSafeArea(.container)
-        .background(Color.vibrantBlue)
+        .background(Asset.Colors.vibrantBlue.swiftUIColor)
         .scrollDismissesKeyboard(.interactively)
     }
 }
@@ -42,7 +42,7 @@ extension LoginView {
     private func loginTextFields(reader: ScrollViewProxy) -> some View {
         Group {
             LoginTextField(type: .normal,
-                           label: "email".localized,
+                           label: L10n.email,
                            text: $email,
                            foregroundColor: .white
             )
@@ -56,7 +56,7 @@ extension LoginView {
             }
 
             LoginTextField(type: .secure,
-                           label: "password".localized,
+                           label: L10n.password,
                            text: $password,
                            foregroundColor: .white
             )
@@ -77,27 +77,27 @@ extension LoginView {
                 Button {
                     print("forgot")
                 } label: {
-                    Text("forgot_password")
+                    Text(L10n.forgotPassword)
                         .foregroundColor(.white)
                 }
                 .font(.system(size: 12))
                 .padding(.bottom, 48.0)
             }
 
-            RoundedButton(label: "login".localized,
-                          foregroundColor: .vibrantBlue,
+            RoundedButton(label: L10n.login,
+                          foregroundColor: Asset.Colors.vibrantBlue.swiftUIColor,
                           backgroundColor: .white) {
                 print("login")
             }.padding(.bottom, 25)
 
             HStack {
-                Text("dont_have_account")
+                Text(L10n.dontHaveAccount)
                     .font(.system(size: 12))
-                    .foregroundColor(.lightGrayBlue)
+                    .foregroundColor(Asset.Colors.lightGrayBlue.swiftUIColor)
                 Button {
                     print("register")
                 } label: {
-                    Text("register_now")
+                    Text(L10n.registerNow)
                         .foregroundColor(.white)
                 }
                 .font(.system(size: 12))

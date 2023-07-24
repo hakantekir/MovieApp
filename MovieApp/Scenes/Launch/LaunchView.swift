@@ -11,12 +11,12 @@ import SwiftUI
 struct LaunchView: View {
     var body: some View {
         ZStack {
-            Image("launchBackground")
+            Asset.Images.launchBackground.swiftUIImage
                 .resizable()
                 .scaledToFill()
                 .frame(minHeight: 0)
 
-            Image("launchIcon")
+            Asset.Images.launchIcon.swiftUIImage
 
             VStack {
                 Spacer()
