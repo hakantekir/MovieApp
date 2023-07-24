@@ -23,62 +23,9 @@ struct LoginView: View {
                         Image("launchIcon")
                             .padding(.bottom, 91.0)
 
-                        LoginTextField(type: .normal,
-                                       label: "email".localized,
-                                       text: $email,
-                                       foregroundColor: .white
-                        )
-                        .textInputAutocapitalization(.never)
-                        .keyboardType(.emailAddress)
-                        .padding(.bottom, 24)
-                        .onTapGesture {
-                            withAnimation {
-                                reader.scrollTo(1, anchor: .center)
-                            }
-                        }
+                        loginTextFields(reader: reader)
 
-                        LoginTextField(type: .secure,
-                                       label: "password".localized,
-                                       text: $password,
-                                       foregroundColor: .white
-                        )
-                        .padding(.bottom, 24)
-                        .keyboardType(.asciiCapable)
-                        .onTapGesture {
-                            withAnimation {
-                                reader.scrollTo(1, anchor: .center)
-                            }
-                        }
-
-                        HStack {
-                            Spacer()
-                            Button {
-                                print("forgot")
-                            } label: {
-                                Text("forgot_password")
-                                    .foregroundColor(.white)
-                            }
-                            .font(.system(size: 12))
-                            .padding(.bottom, 48.0)
-                        }
-
-                        RoundedButton(label: "login".localized,
-                                      foregroundColor: .vibrantBlue,
-                                      backgroundColor: .white) {
-                            print("login")
-                        }.padding(.bottom, 25)
-                        HStack {
-                            Text("dont_have_account")
-                                .font(.system(size: 12))
-                                .foregroundColor(.lightGrayBlue)
-                            Button {
-                                print("register")
-                            } label: {
-                                Text("register_now")
-                                    .foregroundColor(.white)
-                            }
-                            .font(.system(size: 12))
-                        }
+                        loginButtons()
                         .id(1)
                     }
                     .padding(.horizontal, 24)
@@ -88,6 +35,74 @@ struct LoginView: View {
         .ignoresSafeArea(.container)
         .background(Color.vibrantBlue)
         .scrollDismissesKeyboard(.interactively)
+    }
+}
+
+extension LoginView {
+    private func loginTextFields(reader: ScrollViewProxy) -> some View {
+        Group {
+            LoginTextField(type: .normal,
+                           label: "email".localized,
+                           text: $email,
+                           foregroundColor: .white
+            )
+            .textInputAutocapitalization(.never)
+            .keyboardType(.emailAddress)
+            .padding(.bottom, 24)
+            .onTapGesture {
+                withAnimation {
+                    reader.scrollTo(1, anchor: .center)
+                }
+            }
+
+            LoginTextField(type: .secure,
+                           label: "password".localized,
+                           text: $password,
+                           foregroundColor: .white
+            )
+            .padding(.bottom, 24)
+            .keyboardType(.asciiCapable)
+            .onTapGesture {
+                withAnimation {
+                    reader.scrollTo(1, anchor: .center)
+                }
+            }
+        }
+    }
+
+    private func loginButtons() -> some View {
+        Group {
+            HStack {
+                Spacer()
+                Button {
+                    print("forgot")
+                } label: {
+                    Text("forgot_password")
+                        .foregroundColor(.white)
+                }
+                .font(.system(size: 12))
+                .padding(.bottom, 48.0)
+            }
+
+            RoundedButton(label: "login".localized,
+                          foregroundColor: .vibrantBlue,
+                          backgroundColor: .white) {
+                print("login")
+            }.padding(.bottom, 25)
+
+            HStack {
+                Text("dont_have_account")
+                    .font(.system(size: 12))
+                    .foregroundColor(.lightGrayBlue)
+                Button {
+                    print("register")
+                } label: {
+                    Text("register_now")
+                        .foregroundColor(.white)
+                }
+                .font(.system(size: 12))
+            }
+        }
     }
 }
 
