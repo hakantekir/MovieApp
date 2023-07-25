@@ -1,0 +1,15 @@
+xcassets:
+  inputs:
+    - MovieApp/Resources/Assets.xcassets
+    - MovieApp/Resources/Colors.xcassets
+    - MovieApp/Resources/Icons.xcassets
+    - MovieApp/Resources/Images.xcassets
+  outputs:
+    - templateName: swift5
+      output: MovieApp/Resources/Assets.swift
+strings:
+  inputs:
+    - MovieApp/Resources/en.lproj/Localizable.strings
+  outputs:
+    - templateName: structured-swift5
+      output: MovieApp/Resources/Strings.swift
