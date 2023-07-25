@@ -11,6 +11,8 @@ import SwiftUI
 struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
+    @ObservedObject var viewModel = LoginViewModel()
+
     var body: some View {
         ScrollView(showsIndicators: false) {
             ScrollViewReader { reader in
@@ -35,6 +37,11 @@ struct LoginView: View {
         .ignoresSafeArea(.container)
         .background(Asset.Colors.vibrantBlue.swiftUIColor)
         .scrollDismissesKeyboard(.interactively)
+        .onAppear {
+            Task {
+                await self.viewModel.getRequestToken()
+            }
+        }
     }
 }
 

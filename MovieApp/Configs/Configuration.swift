@@ -34,4 +34,5 @@ final class Configuration {
         #endif
     }
 
+    static let baseURL = "https://api.themoviedb.org/3/"
 }

@@ -85,6 +85,12 @@
 		A24A055F2A6674A800216F15 /* RequestObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24A055E2A6674A800216F15 /* RequestObject.swift */; };
 		A24A05612A66755E00216F15 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24A05602A66755E00216F15 /* NetworkManager.swift */; };
 		A24A05632A667A9700216F15 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24A05622A667A9700216F15 /* ErrorResponse.swift */; };
+		A27FD8BB2A6F9E680068D260 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27FD8BA2A6F9E680068D260 /* LoginViewModel.swift */; };
+		A27FD8C22A6FC1C30068D260 /* LoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27FD8C12A6FC1C30068D260 /* LoginRequestModel.swift */; };
+		A27FD8C52A6FC2A30068D260 /* LoginEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27FD8C42A6FC2A30068D260 /* LoginEndpoints.swift */; };
+		A27FD8C92A6FC3F00068D260 /* AuthenticationTokenResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27FD8C82A6FC3F00068D260 /* AuthenticationTokenResponseModel.swift */; };
+		A27FD8CC2A6FEFB20068D260 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27FD8CB2A6FEFB20068D260 /* NetworkService.swift */; };
+		A27FD8CE2A6FF2FB0068D260 /* EndpointProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27FD8CD2A6FF2FB0068D260 /* EndpointProtocol.swift */; };
 		A2C6A0282A6EA611009B817A /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = A2C6A0272A6EA611009B817A /* swiftgen.yml */; };
 		A2C6A02A2A6EAD4C009B817A /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C6A0292A6EAD4C009B817A /* Assets.swift */; };
 		A2C6A02C2A6EAD86009B817A /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C6A02B2A6EAD86009B817A /* Strings.swift */; };
@@ -165,6 +171,12 @@
 		A24A055E2A6674A800216F15 /* RequestObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestObject.swift; sourceTree = "<group>"; };
 		A24A05602A66755E00216F15 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		A24A05622A667A9700216F15 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		A27FD8BA2A6F9E680068D260 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		A27FD8C12A6FC1C30068D260 /* LoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestModel.swift; sourceTree = "<group>"; };
+		A27FD8C42A6FC2A30068D260 /* LoginEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEndpoints.swift; sourceTree = "<group>"; };
+		A27FD8C82A6FC3F00068D260 /* AuthenticationTokenResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTokenResponseModel.swift; sourceTree = "<group>"; };
+		A27FD8CB2A6FEFB20068D260 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		A27FD8CD2A6FF2FB0068D260 /* EndpointProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProtocol.swift; sourceTree = "<group>"; };
 		A2C6A0272A6EA611009B817A /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		A2C6A0292A6EAD4C009B817A /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		A2C6A02B2A6EAD86009B817A /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
@@ -233,7 +245,9 @@
 			isa = PBXGroup;
 			children = (
 				A24A05562A6671E900216F15 /* Base */,
+				A27FD8C32A6FC2800068D260 /* Endpoints */,
 				A24A05572A66725500216F15 /* Entities */,
+				A27FD8CA2A6FEFA20068D260 /* Service */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -294,6 +308,7 @@
 				26C4C58825766B4400358DAE /* Managers */,
 				26BCDA36257A398600096894 /* Network */,
 				2FCDE1272566413F00203445 /* Scenes */,
+				A27FD8BE2A6FC18A0068D260 /* Model */,
 				2FCDE1262566412700203445 /* Resources */,
 				2FCDE13725665B5E00203445 /* Utility */,
 			);
@@ -401,6 +416,7 @@
 			isa = PBXGroup;
 			children = (
 				6A7204C92A67FFB900E60B21 /* LoginView.swift */,
+				A27FD8BA2A6F9E680068D260 /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -457,6 +473,64 @@
 				A24A05622A667A9700216F15 /* ErrorResponse.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		A27FD8BE2A6FC18A0068D260 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A27FD8C62A6FC3D60068D260 /* Response */,
+				A27FD8BF2A6FC1960068D260 /* Request */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A27FD8BF2A6FC1960068D260 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				A27FD8C02A6FC1AF0068D260 /* Login */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		A27FD8C02A6FC1AF0068D260 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A27FD8C12A6FC1C30068D260 /* LoginRequestModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A27FD8C32A6FC2800068D260 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				A27FD8CD2A6FF2FB0068D260 /* EndpointProtocol.swift */,
+				A27FD8C42A6FC2A30068D260 /* LoginEndpoints.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		A27FD8C62A6FC3D60068D260 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				A27FD8C72A6FC3DE0068D260 /* Login */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		A27FD8C72A6FC3DE0068D260 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A27FD8C82A6FC3F00068D260 /* AuthenticationTokenResponseModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A27FD8CA2A6FEFA20068D260 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A27FD8CB2A6FEFB20068D260 /* NetworkService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		D1AC819828F69C9600E5B0AE /* ViewModifiers */ = {
@@ -714,6 +788,7 @@
 				720A19F829E6BCF600265401 /* ArrayExtensions.swift in Sources */,
 				26BCDA2A2579857E00096894 /* UIApplicationExtension.swift in Sources */,
 				72B4409629966B1C004D1FC5 /* NewPhotoPickerView.swift in Sources */,
+				A27FD8C92A6FC3F00068D260 /* AuthenticationTokenResponseModel.swift in Sources */,
 				26C4C62525769BE400358DAE /* Configuration.swift in Sources */,
 				A24A05612A66755E00216F15 /* NetworkManager.swift in Sources */,
 				26BCDA252579852700096894 /* LoggingService.swift in Sources */,
@@ -723,8 +798,11 @@
 				72B44092299654B5004D1FC5 /* ImagePickerView.swift in Sources */,
 				26BCDA202579833600096894 /* Logger.swift in Sources */,
 				18CADB3528A932FE007FC2C8 /* MovieAppApp.swift in Sources */,
+				A27FD8C22A6FC1C30068D260 /* LoginRequestModel.swift in Sources */,
 				72B4409829967738004D1FC5 /* UIImagePickerControllerSourceTypeExtension.swift in Sources */,
+				A27FD8BB2A6F9E680068D260 /* LoginViewModel.swift in Sources */,
 				A24A055B2A66728900216F15 /* NetworkError.swift in Sources */,
+				A27FD8CE2A6FF2FB0068D260 /* EndpointProtocol.swift in Sources */,
 				72B440942996688B004D1FC5 /* BigButtonTextModifier.swift in Sources */,
 				D1AC819728F69C4500E5B0AE /* OnFirstAppearModifier.swift in Sources */,
 				2FCDE1572566AE2700203445 /* UITableViewExtensions.swift in Sources */,
@@ -732,8 +810,10 @@
 				26BCDA2F2579859500096894 /* UIDeviceExtension.swift in Sources */,
 				A24A05632A667A9700216F15 /* ErrorResponse.swift in Sources */,
 				6A7204CA2A67FFB900E60B21 /* LoginView.swift in Sources */,
+				A27FD8CC2A6FEFB20068D260 /* NetworkService.swift in Sources */,
 				18CADB3828A93B4F007FC2C8 /* HomeView.swift in Sources */,
 				A24A05592A66726A00216F15 /* HTTPStatus.swift in Sources */,
+				A27FD8C52A6FC2A30068D260 /* LoginEndpoints.swift in Sources */,
 				6A7204CE2A68128800E60B21 /* LoginTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
