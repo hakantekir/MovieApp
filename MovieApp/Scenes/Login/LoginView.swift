@@ -9,8 +9,6 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var email = ""
-    @State private var password = ""
     @ObservedObject var viewModel = LoginViewModel()
 
     var body: some View {
@@ -50,7 +48,7 @@ extension LoginView {
         Group {
             LoginTextField(type: .normal,
                            label: L10n.email,
-                           text: $email,
+                           text: $viewModel.username,
                            foregroundColor: Asset.Colors.white.swiftUIColor
             )
             .textInputAutocapitalization(.never)
@@ -64,11 +62,12 @@ extension LoginView {
 
             LoginTextField(type: .secure,
                            label: L10n.password,
-                           text: $password,
+                           text: $viewModel.password,
                            foregroundColor: Asset.Colors.white.swiftUIColor
             )
             .padding(.bottom, 24)
             .keyboardType(.asciiCapable)
+            .textInputAutocapitalization(.none)
             .onTapGesture {
                 withAnimation {
                     reader.scrollTo(1, anchor: .center)
@@ -94,7 +93,13 @@ extension LoginView {
             RoundedButton(label: L10n.login,
                           foregroundColor: Asset.Colors.vibrantBlue.swiftUIColor,
                           backgroundColor: Asset.Colors.white.swiftUIColor) {
-                print("login")
+                Task {
+                    do {
+                        try await viewModel.login()
+                    } catch {
+                        print(error)
+                    }
+                }
             }.padding(.bottom, 25)
 
             HStack {

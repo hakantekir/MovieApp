@@ -11,7 +11,7 @@ import Foundation
 enum LoginEndpoints: EndpointProtocol {
     case authenticationToken
     case loginWithToken(username: String, password: String, token: String)
-    case createSession
+    case createSession(requestToken: String)
 
     var path: String {
         switch self {
@@ -26,12 +26,16 @@ enum LoginEndpoints: EndpointProtocol {
 
     func createObjectRequest() -> RequestObject {
         switch self {
+            case .authenticationToken:
+                return RequestObject(url: self.path)
             case .loginWithToken(let username, let password, let token):
                 let requestModel = LoginRequestModel(username: username, password: password, requestToken: token)
                 let data = try? JSONEncoder().encode(requestModel)
                 return RequestObject(url: self.path, method: .post, body: data)
-            default:
-                return RequestObject(url: self.path)
+            case .createSession(let requestToken):
+                let requestModel = SessionRequestModel(requestToken: requestToken)
+                let data = try? JSONEncoder().encode(requestModel)
+                return RequestObject(url: self.path, method: .post, body: data)
         }
     }
 }

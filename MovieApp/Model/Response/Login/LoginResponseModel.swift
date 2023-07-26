@@ -1,5 +1,5 @@
 //
-//  AuthenticationTokenResponseModel.swift
+//  LoginResponseModel.swift
 //  MovieApp
 //
 //  Created by Hakan Tekir on 25.07.2023.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct AuthenticationTokenResponseModel: Decodable {
+struct LoginResponseModel: Decodable {
     let success: Bool?
     let expiresAt: String?
     let requestToken: String?
