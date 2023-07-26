@@ -9,7 +9,9 @@
 import SwiftUI
 
 struct LoginView: View {
-    @ObservedObject var viewModel = LoginViewModel()
+    @ObservedObject private var viewModel = LoginViewModel()
+    @State private var presentForgotWebView: Bool = false
+    @State private var presentRegisterWebView: Bool = false
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -85,13 +87,23 @@ extension LoginView {
             HStack {
                 Spacer()
                 Button {
-                    print("forgot")
+                    presentForgotWebView = true
                 } label: {
                     Text(L10n.forgotPassword)
                         .foregroundColor(Asset.Colors.white.swiftUIColor)
                 }
                 .font(.system(size: 12))
                 .padding(.bottom, 48.0)
+                .sheet(isPresented: $presentForgotWebView) {
+                    NavigationStack {
+                        // swiftlint:disable:next force_unwrapping
+                        WebView(url: URL(string: "https://www.themoviedb.org/reset-password")!)
+                            .navigationTitle(L10n.forgotPassword)
+                            .navigationBarTitleDisplayMode(.inline)
+                    }
+                    .presentationDetents([.fraction(0.6), .large])
+                    .presentationDragIndicator(.visible)
+                }
             }
 
             RoundedButton(label: L10n.login,
@@ -107,12 +119,22 @@ extension LoginView {
                     .font(.system(size: 12))
                     .foregroundColor(Asset.Colors.lightGrayBlue.swiftUIColor)
                 Button {
-                    print("register")
+                    presentRegisterWebView = true
                 } label: {
                     Text(L10n.registerNow)
                         .foregroundColor(Asset.Colors.white.swiftUIColor)
                 }
                 .font(.system(size: 12))
+                .sheet(isPresented: $presentRegisterWebView) {
+                    NavigationStack {
+                        // swiftlint:disable:next force_unwrapping
+                        WebView(url: URL(string: "https://www.themoviedb.org/signup")!)
+                            .navigationTitle(L10n.registerNow)
+                            .navigationBarTitleDisplayMode(.inline)
+                    }
+                    .presentationDetents([.fraction(0.6), .large])
+                    .presentationDragIndicator(.visible)
+                }
             }
         }
     }
