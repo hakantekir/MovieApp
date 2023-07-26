@@ -29,6 +29,20 @@ struct LoginView: View {
                         .id(1)
                     }
                     .padding(.horizontal, 24)
+
+                    if viewModel.presentAlert {
+                        CustomAlert(message: viewModel.alertMessage, buttonLabel: "Okey") {
+                                withAnimation(.easeIn(duration: 0.5)) {
+                                    viewModel.presentAlert.toggle()
+                                }
+                            }
+                        .onAppear {
+                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                            withAnimation {
+                                reader.scrollTo(1, anchor: .bottom)
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -37,7 +51,7 @@ struct LoginView: View {
         .scrollDismissesKeyboard(.interactively)
         .onAppear {
             Task {
-                await self.viewModel.getRequestToken()
+                try await self.viewModel.getRequestToken()
             }
         }
     }
@@ -94,11 +108,7 @@ extension LoginView {
                           foregroundColor: Asset.Colors.vibrantBlue.swiftUIColor,
                           backgroundColor: Asset.Colors.white.swiftUIColor) {
                 Task {
-                    do {
-                        try await viewModel.login()
-                    } catch {
-                        print(error)
-                    }
+                    await viewModel.login()
                 }
             }.padding(.bottom, 25)
 

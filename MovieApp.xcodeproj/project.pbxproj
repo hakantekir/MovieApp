@@ -85,6 +85,7 @@
 		A24A055F2A6674A800216F15 /* RequestObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24A055E2A6674A800216F15 /* RequestObject.swift */; };
 		A24A05612A66755E00216F15 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24A05602A66755E00216F15 /* NetworkManager.swift */; };
 		A24A05632A667A9700216F15 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24A05622A667A9700216F15 /* ErrorResponse.swift */; };
+		A25458042A7122D00098945C /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25458032A7122D00098945C /* CustomAlert.swift */; };
 		A27FD8BB2A6F9E680068D260 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27FD8BA2A6F9E680068D260 /* LoginViewModel.swift */; };
 		A27FD8C22A6FC1C30068D260 /* LoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27FD8C12A6FC1C30068D260 /* LoginRequestModel.swift */; };
 		A27FD8C52A6FC2A30068D260 /* LoginEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27FD8C42A6FC2A30068D260 /* LoginEndpoints.swift */; };
@@ -174,6 +175,7 @@
 		A24A055E2A6674A800216F15 /* RequestObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestObject.swift; sourceTree = "<group>"; };
 		A24A05602A66755E00216F15 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		A24A05622A667A9700216F15 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		A25458032A7122D00098945C /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		A27FD8BA2A6F9E680068D260 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A27FD8C12A6FC1C30068D260 /* LoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestModel.swift; sourceTree = "<group>"; };
 		A27FD8C42A6FC2A30068D260 /* LoginEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEndpoints.swift; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 				72B4408F29965134004D1FC5 /* ImagePicker.swift */,
 				6A7204CB2A6811D100E60B21 /* RoundedButton.swift */,
 				6A7204CD2A68128800E60B21 /* LoginTextField.swift */,
+				A25458032A7122D00098945C /* CustomAlert.swift */,
 			);
 			path = ViewRepresentables;
 			sourceTree = "<group>";
@@ -792,6 +795,7 @@
 				2F56AE8E256E487F0007D0A2 /* StringExtensions.swift in Sources */,
 				A24A055F2A6674A800216F15 /* RequestObject.swift in Sources */,
 				18CADB3228A92CDC007FC2C8 /* MainView.swift in Sources */,
+				A25458042A7122D00098945C /* CustomAlert.swift in Sources */,
 				2F56AE8A256E44BB0007D0A2 /* UICollectionViewCellExtensions.swift in Sources */,
 				72C4BE3E29A6376C0032CFF2 /* AppDelegate.swift in Sources */,
 				6A7204CC2A6811D100E60B21 /* RoundedButton.swift in Sources */,

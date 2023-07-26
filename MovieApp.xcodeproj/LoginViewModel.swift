@@ -21,23 +21,30 @@ class LoginViewModel: ObservableObject {
     }
 
     func login() async {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
+
         do {
-            if isTokenExpired() {
+            guard let requestToken,
+                  let expiresAt = requestToken.expiresAt,
+                  let date = dateFormatter.date(from: expiresAt),
+                  date > .now else {
                 try await getRequestToken()
+                return
             }
 
             let validation = try await NetworkService.shared.request(
                 endpoint: LoginEndpoints.loginWithToken(
                     username: username,
                     password: password,
-                    token: requestToken?.requestToken ?? ""
+                    token: requestToken.requestToken ?? ""
                 ),
                 responseModel: LoginResponseModel.self)
 
             if validation.success ?? false {
                 let session = try await NetworkService.shared.request(
                     endpoint: LoginEndpoints.createSession(
-                        requestToken: requestToken?.requestToken ?? ""
+                        requestToken: requestToken.requestToken ?? ""
                     ), responseModel: SessionResponseModel.self)
                 if session.success ?? false {
                     print(session.sessionId)
@@ -52,18 +59,5 @@ class LoginViewModel: ObservableObject {
             alertMessage = message
             presentAlert = true
         }
-    }
-
-    func isTokenExpired() -> Bool {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
-
-        guard let requestToken,
-              let expiresAt = requestToken.expiresAt,
-              let date = dateFormatter.date(from: expiresAt),
-              date > .now else {
-            return true
-        }
-        return false
     }
 }
