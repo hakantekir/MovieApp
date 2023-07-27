@@ -31,17 +31,7 @@ struct LoginView: View {
                     .padding(.horizontal, 24)
 
                     if viewModel.presentAlert {
-                        CustomAlert(message: viewModel.alertMessage, buttonLabel: "Okey") {
-                                withAnimation(.easeIn(duration: 0.5)) {
-                                    viewModel.presentAlert.toggle()
-                                }
-                            }
-                        .onAppear {
-                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                            withAnimation {
-                                reader.scrollTo(1, anchor: .bottom)
-                            }
-                        }
+                        customAlert(reader: reader)
                     }
                 }
             }
@@ -123,6 +113,20 @@ extension LoginView {
                         .foregroundColor(Asset.Colors.white.swiftUIColor)
                 }
                 .font(.system(size: 12))
+            }
+        }
+    }
+
+    private func customAlert(reader: ScrollViewProxy) -> some View {
+        CustomAlert(message: viewModel.alertMessage, buttonLabel: "Okey") {
+                withAnimation(.easeIn(duration: 0.5)) {
+                    viewModel.presentAlert.toggle()
+                }
+            }
+        .onAppear {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            withAnimation {
+                reader.scrollTo(1, anchor: .bottom)
             }
         }
     }

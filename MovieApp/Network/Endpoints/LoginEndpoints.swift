@@ -16,11 +16,11 @@ enum LoginEndpoints: EndpointProtocol {
     var path: String {
         switch self {
             case .authenticationToken:
-                return Configuration.baseURL + "authentication/token/new"
+            return (Configuration.baseURL ?? "") + "authentication/token/new"
             case .loginWithToken:
-                return Configuration.baseURL + "authentication/token/validate_with_login"
+            return (Configuration.baseURL ?? "") + "authentication/token/validate_with_login"
             case .createSession:
-                return Configuration.baseURL + "authentication/session/new"
+            return (Configuration.baseURL ?? "") + "authentication/session/new"
         }
     }
 

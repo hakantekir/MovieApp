@@ -26,23 +26,16 @@ class LoginViewModel: ObservableObject {
                 try await getRequestToken()
             }
 
-            let validation = try await NetworkService.shared.request(
-                endpoint: LoginEndpoints.loginWithToken(
-                    username: username,
-                    password: password,
-                    token: requestToken?.requestToken ?? ""
-                ),
-                responseModel: LoginResponseModel.self)
-
-            if validation.success ?? false {
-                let session = try await NetworkService.shared.request(
-                    endpoint: LoginEndpoints.createSession(
-                        requestToken: requestToken?.requestToken ?? ""
-                    ), responseModel: SessionResponseModel.self)
-                if session.success ?? false {
-                    print(session.sessionId)
-                }
+            let validation =  try await validateUser()
+            guard validation.success ?? false else {
+                throw NetworkError.customError(0, "Unknown error!")
             }
+
+            let session = try await createSession()
+            guard session.success ?? false else {
+                throw NetworkError.customError(0, "Unknown error!")
+            }
+            
         } catch {
             guard let error = error as? NetworkError, let message = error.response?.message else {
                 alertMessage = "Unknown error!"
@@ -54,7 +47,7 @@ class LoginViewModel: ObservableObject {
         }
     }
 
-    func isTokenExpired() -> Bool {
+    private func isTokenExpired() -> Bool {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
 
@@ -65,5 +58,22 @@ class LoginViewModel: ObservableObject {
             return true
         }
         return false
+    }
+
+    private func validateUser() async throws -> LoginResponseModel {
+        try await NetworkService.shared.request(
+            endpoint: LoginEndpoints.loginWithToken(
+                username: username,
+                password: password,
+                token: requestToken?.requestToken ?? ""
+            ),
+            responseModel: LoginResponseModel.self)
+    }
+
+    private func createSession() async throws -> SessionResponseModel {
+        try await NetworkService.shared.request(
+            endpoint: LoginEndpoints.createSession(
+                requestToken: requestToken?.requestToken ?? ""
+            ), responseModel: SessionResponseModel.self)
     }
 }

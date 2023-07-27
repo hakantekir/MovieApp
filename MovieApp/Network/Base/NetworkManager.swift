@@ -29,13 +29,13 @@ class NetworkManager {
         var request = URLRequest(url: url)
         request.httpMethod = requestObject.method.rawValue
 
-        // swiftlint:disable:next line_length
-        let token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZGJjM2Q1YzRmNDY5ZTgxYWE1MjRjNzA3MmYwZWI2NyIsInN1YiI6IjY0YWZlMDg1ZDY1OTBiMDEzYmE0Y2JkOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.1Canhnh1iEvjLHx3lDpVkDFGnpKYcri8fzGufsDBAss"
+        let token = "Bearer " + (Configuration.apiKey ?? "")
 
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue(token, forHTTPHeaderField: "Authorization")
         request.allHTTPHeaderFields = requestObject.headers
+
         request.httpBody = requestObject.body
 
         return request
