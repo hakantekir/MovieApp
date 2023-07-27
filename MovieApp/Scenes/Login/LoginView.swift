@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var email = ""
-    @State private var password = ""
+    @ObservedObject var viewModel = LoginViewModel()
+
     var body: some View {
         ScrollView(showsIndicators: false) {
             ScrollViewReader { reader in
@@ -29,12 +29,21 @@ struct LoginView: View {
                         .id(1)
                     }
                     .padding(.horizontal, 24)
+
+                    if viewModel.presentAlert {
+                        customAlert(reader: reader)
+                    }
                 }
             }
         }
         .ignoresSafeArea(.container)
         .background(Asset.Colors.vibrantBlue.swiftUIColor)
         .scrollDismissesKeyboard(.interactively)
+        .onAppear {
+            Task {
+                try await self.viewModel.getRequestToken()
+            }
+        }
     }
 }
 
@@ -43,7 +52,7 @@ extension LoginView {
         Group {
             LoginTextField(type: .normal,
                            label: L10n.email,
-                           text: $email,
+                           text: $viewModel.username,
                            foregroundColor: Asset.Colors.white.swiftUIColor
             )
             .textInputAutocapitalization(.never)
@@ -57,11 +66,12 @@ extension LoginView {
 
             LoginTextField(type: .secure,
                            label: L10n.password,
-                           text: $password,
+                           text: $viewModel.password,
                            foregroundColor: Asset.Colors.white.swiftUIColor
             )
             .padding(.bottom, 24)
             .keyboardType(.asciiCapable)
+            .textInputAutocapitalization(.none)
             .onTapGesture {
                 withAnimation {
                     reader.scrollTo(1, anchor: .center)
@@ -87,7 +97,9 @@ extension LoginView {
             RoundedButton(label: L10n.login,
                           foregroundColor: Asset.Colors.vibrantBlue.swiftUIColor,
                           backgroundColor: Asset.Colors.white.swiftUIColor) {
-                print("login")
+                Task {
+                    await viewModel.login()
+                }
             }.padding(.bottom, 25)
 
             HStack {
@@ -101,6 +113,20 @@ extension LoginView {
                         .foregroundColor(Asset.Colors.white.swiftUIColor)
                 }
                 .font(.system(size: 12))
+            }
+        }
+    }
+
+    private func customAlert(reader: ScrollViewProxy) -> some View {
+        CustomAlert(message: viewModel.alertMessage, buttonLabel: "Okey") {
+                withAnimation(.easeIn(duration: 0.5)) {
+                    viewModel.presentAlert.toggle()
+                }
+            }
+        .onAppear {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            withAnimation {
+                reader.scrollTo(1, anchor: .bottom)
             }
         }
     }

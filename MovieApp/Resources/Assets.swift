@@ -28,6 +28,7 @@ internal enum Asset {
   }
   internal enum Colors {
     internal static let lightGrayBlue = ColorAsset(name: "lightGrayBlue")
+    internal static let translucentBackground = ColorAsset(name: "translucentBackground")
     internal static let vibrantBlue = ColorAsset(name: "vibrantBlue")
     internal static let white = ColorAsset(name: "white")
   }
@@ -36,6 +37,7 @@ internal enum Asset {
   }
   internal enum Images {
     internal static let image = ImageAsset(name: "Image")
+    internal static let alertTopImage = ImageAsset(name: "alertTopImage")
     internal static let launchBackground = ImageAsset(name: "launchBackground")
     internal static let launchIcon = ImageAsset(name: "launchIcon")
     internal static let loginBackground = ImageAsset(name: "loginBackground")

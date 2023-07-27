@@ -34,4 +34,11 @@ final class Configuration {
         #endif
     }
 
+    static var apiKey: String? {
+        try? Configuration.value(for: "API_KEY")
+    }
+
+    static var baseURL: String? {
+        try? Configuration.value(for: "BASE_URL")
+    }
 }
