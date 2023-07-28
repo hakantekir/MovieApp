@@ -41,4 +41,12 @@ final class Configuration {
     static var baseURL: String? {
         try? Configuration.value(for: "BASE_URL")
     }
+
+    static var resetPasswordURL: String? {
+        try? Configuration.value(for: "RESET_PASSWORD_URL")
+    }
+
+    static var registerURL: String? {
+        try? Configuration.value(for: "REGISTER_URL")
+    }
 }

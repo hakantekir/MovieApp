@@ -96,10 +96,12 @@ extension LoginView {
                 .padding(.bottom, 48.0)
                 .sheet(isPresented: $presentForgotWebView) {
                     NavigationStack {
-                        // swiftlint:disable:next force_unwrapping
-                        WebView(url: URL(string: "https://www.themoviedb.org/reset-password")!)
-                            .navigationTitle(L10n.forgotPassword)
-                            .navigationBarTitleDisplayMode(.inline)
+                        if let resetPasswordString = Configuration.resetPasswordURL,
+                           let resetPasswordURL = URL(string: resetPasswordString) {
+                            WebView(url: resetPasswordURL)
+                                .navigationTitle(L10n.forgotPassword)
+                                .navigationBarTitleDisplayMode(.inline)
+                        }
                     }
                     .presentationDetents([.fraction(0.6), .large])
                     .presentationDragIndicator(.visible)
@@ -127,10 +129,12 @@ extension LoginView {
                 .font(.system(size: 12))
                 .sheet(isPresented: $presentRegisterWebView) {
                     NavigationStack {
-                        // swiftlint:disable:next force_unwrapping
-                        WebView(url: URL(string: "https://www.themoviedb.org/signup")!)
-                            .navigationTitle(L10n.registerNow)
-                            .navigationBarTitleDisplayMode(.inline)
+                        if let registerString = Configuration.registerURL,
+                           let registerURL = URL(string: registerString) {
+                            WebView(url: registerURL)
+                                .navigationTitle(L10n.registerNow)
+                                .navigationBarTitleDisplayMode(.inline)
+                        }
                     }
                     .presentationDetents([.fraction(0.6), .large])
                     .presentationDragIndicator(.visible)
