@@ -20,7 +20,7 @@ struct MoviesView: View {
                             .frame(height: 100)
                         Spacer()
                     }
-                    .onAppear {
+                    .onFirstAppear {
                         Task {
                             await viewModel.fetchMovieGenres()
                             await viewModel.fetchNowPlayingMovies()
@@ -30,7 +30,7 @@ struct MoviesView: View {
 
                     VStack {
                         MediaCardView(movies: viewModel.nowPlayingMovies?.results ?? [])
-                            .frame(height: 520)
+                            .frame(height: 560)
 
                         VStack(alignment: .leading) {
                             Divider()
@@ -46,7 +46,7 @@ struct MoviesView: View {
                     }
                 }
             }
-            .navigationTitle("Movies")
+            .navigationTitle(L10n.movies)
             .toolbarColorScheme(.dark, for: .navigationBar)
             .toolbarBackground(Asset.Colors.vibrantBlue.swiftUIColor, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)

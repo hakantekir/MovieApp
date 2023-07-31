@@ -27,6 +27,7 @@ internal enum Asset {
   internal enum Assets {
   }
   internal enum Colors {
+    internal static let almostBlack = ColorAsset(name: "almostBlack")
     internal static let lightGrayBlue = ColorAsset(name: "lightGrayBlue")
     internal static let translucentBackground = ColorAsset(name: "translucentBackground")
     internal static let vibrantBlue = ColorAsset(name: "vibrantBlue")
@@ -45,6 +46,7 @@ internal enum Asset {
     internal static let loginBackground = ImageAsset(name: "loginBackground")
     internal static let mediaPlaceholder = ImageAsset(name: "mediaPlaceholder")
     internal static let star = ImageAsset(name: "star")
+    internal static let time = ImageAsset(name: "time")
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

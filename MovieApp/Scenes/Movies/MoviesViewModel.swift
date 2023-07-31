@@ -22,7 +22,7 @@ class MoviesViewModel: ObservableObject {
     }
 
     func fetchMovieGenres() async {
-        let genres = try? await NetworkService.shared.request(endpoint: MovieEndpoints.genres, responseModel: MovieGenresModel.self)
-        MovieModel.genres = genres?.genres
+        let genresResponse = try? await NetworkService.shared.request(endpoint: MovieEndpoints.genres, responseModel: MovieGenresModel.self)
+        MovieModel.genres = genresResponse?.genres
     }
 }

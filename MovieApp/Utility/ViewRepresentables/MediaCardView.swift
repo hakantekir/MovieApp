@@ -15,16 +15,20 @@ struct MediaCardView: View {
                 TabView {
                     ForEach(movies, id: \.id) { movie in
                         VStack {
-                            AsyncImage(url: URL(string: (Configuration.imageURL ?? "") + (movie.posterPath ?? "")),
-                                       content: { image in
-                                image
-                                    .resizable()
-                            }, placeholder: {
-                                Asset.Images.mediaPlaceholder.swiftUIImage
-                                    .resizable()
-                            })
-                            .frame(width: reader.size.width * 0.7, height: reader.size.width)
+                            NavigationLink {
+                                MovieDetailsView(media: movie)
+                            } label: {
+                                AsyncImage(url: URL(string: (Configuration.imageURL ?? "") + (movie.posterPath ?? "")),
+                                           content: { image in
+                                    image
+                                        .resizable()
+                                }, placeholder: {
+                                    Asset.Images.mediaPlaceholder.swiftUIImage
+                                        .resizable()
+                                })
+                                .frame(width: reader.size.width * 0.7, height: reader.size.width)
 
+                            }
                             mediaSummary(movie: movie)
                                 .padding(.leading, 24)
                                 .padding(.top, 20)
@@ -47,7 +51,7 @@ extension MediaCardView {
             Text(movie.title ?? "")
                 .font(.system(size: 24).bold())
                 .padding(.bottom, 1)
-            Text(movie.genreNames())
+            Text(movie.genreNames)
                 .font(.system(size: 15))
         }
     }

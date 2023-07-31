@@ -12,7 +12,7 @@ enum MovieEndpoints: EndpointProtocol {
     case nowPlaying
     case popular
     case genres
-    case image(filePath: String)
+    case movieDetails(movieID: Int)
 
     var path: String {
         switch self {
@@ -22,15 +22,15 @@ enum MovieEndpoints: EndpointProtocol {
                 return (Configuration.baseURL ?? "") + "movie/popular"
             case .genres:
                 return (Configuration.baseURL ?? "") + "/genre/movie/list"
-            case .image:
-                return (Configuration.imageURL ?? "")
+            case .movieDetails:
+                return (Configuration.baseURL ?? "") + "/movie/"
         }
     }
 
     func createObjectRequest() -> RequestObject {
         switch self {
-            case .image(let filePath):
-                return RequestObject(url: self.path + filePath)
+            case .movieDetails(let movieID):
+                return RequestObject(url: self.path + String(movieID))
             default:
                 return RequestObject(url: self.path)
         }

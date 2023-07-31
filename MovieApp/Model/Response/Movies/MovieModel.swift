@@ -35,10 +35,12 @@ struct MovieModel: Decodable, Identifiable {
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
     }
+}
 
+extension MovieModel {
     static var genres: [Genre]?
-
-    func genreNames() -> String {
+    static private let dateFormatter = DateFormatter()
+    var genreNames: String {
         guard let genres = MovieModel.genres, let genreIDS else {
             return ""
         }
@@ -51,6 +53,16 @@ struct MovieModel: Decodable, Identifiable {
             }
 
         return genreNames.joined(separator: ", ")
+    }
+
+    var localizedReleaseDate: String? {
+        MovieModel.dateFormatter.dateFormat = "yyyy-MM-dd"
+        MovieModel.dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        guard let date = MovieModel.dateFormatter.date(from: releaseDate ?? "") else { return nil }
+        MovieModel.dateFormatter.timeZone = TimeZone.autoupdatingCurrent
+        MovieModel.dateFormatter.dateStyle = .medium
+        MovieModel.dateFormatter.timeStyle = .none
+        return MovieModel.dateFormatter.string(from: date)
     }
 }
 
