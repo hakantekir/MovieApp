@@ -29,6 +29,10 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>REGISTER_URL</key>
+	<string>$(REGISTER_URL)</string>
+	<key>RESET_PASSWORD_URL</key>
+	<string>$(RESET_PASSWORD_URL)</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
