@@ -35,7 +35,7 @@ struct MoviesView: View {
                         VStack(alignment: .leading) {
                             Divider()
                                 .padding(.bottom, 20.0)
-                            Text("Popular")
+                            Text(L10n.popular)
                                 .font(.system(size: 22).bold())
                             ForEach(viewModel.popularMovies?.results ?? [], id: \.id) { movie in
                                 MediaListItemView(media: movie)
