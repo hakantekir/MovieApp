@@ -21,3 +21,6 @@
 "login" = "Login";
 "dont_have_account" = "Don't have an account?";
 "register_now" = "Register Now";
+
+"movies" = "Movies";
+"popular" = "Popular";

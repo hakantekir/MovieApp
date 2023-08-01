@@ -49,4 +49,8 @@ final class Configuration {
     static var registerURL: String? {
         try? Configuration.value(for: "REGISTER_URL")
     }
+
+    static var imageURL: String? {
+        try? Configuration.value(for: "IMAGE_URL")
+    }
 }

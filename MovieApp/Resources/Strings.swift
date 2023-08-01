@@ -26,8 +26,12 @@ internal enum L10n {
   internal static let helloWorld = L10n.tr("Localizable", "Hello, World!", fallback: "Hello")
   /// Login
   internal static let login = L10n.tr("Localizable", "login", fallback: "Login")
+  /// Movies
+  internal static let movies = L10n.tr("Localizable", "movies", fallback: "Movies")
   /// Password
   internal static let password = L10n.tr("Localizable", "password", fallback: "Password")
+  /// Popular
+  internal static let popular = L10n.tr("Localizable", "popular", fallback: "Popular")
   /// Register Now
   internal static let registerNow = L10n.tr("Localizable", "register_now", fallback: "Register Now")
   /// Choose a Photo

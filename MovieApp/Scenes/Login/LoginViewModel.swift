@@ -14,6 +14,7 @@ class LoginViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var presentAlert: Bool = false
     @Published var alertMessage = ""
+    @Published var showMoviesView: Bool = false
     var requestToken: AuthenticationTokenResponseModel?
 
     func getRequestToken() async throws {
@@ -32,10 +33,13 @@ class LoginViewModel: ObservableObject {
             }
 
             let session = try await createSession()
-            guard session.success ?? false else {
+            guard session.success ?? false, let sessionId = session.sessionId else {
                 throw NetworkError.customError(0, "Unknown error!")
             }
-            
+
+            if saveSessionId(with: sessionId) {
+                showMoviesView = true
+            }
         } catch {
             guard let error = error as? NetworkError, let message = error.response?.message else {
                 alertMessage = "Unknown error!"
@@ -75,5 +79,9 @@ class LoginViewModel: ObservableObject {
             endpoint: LoginEndpoints.createSession(
                 requestToken: requestToken?.requestToken ?? ""
             ), responseModel: SessionResponseModel.self)
+    }
+
+    private func saveSessionId(with sessionId: String) -> Bool {
+        KeychainManager.shared.save(key: "SessionID", value: sessionId)
     }
 }

@@ -14,36 +14,40 @@ struct LoginView: View {
     @State private var presentRegisterWebView: Bool = false
 
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            ScrollViewReader { reader in
-                ZStack {
-                    Asset.Images.loginBackground.swiftUIImage
-                        .resizable()
-                        .scaledToFill()
+        if viewModel.showMoviesView {
+            MoviesView()
+        } else {
+            ScrollView(showsIndicators: false) {
+                ScrollViewReader { reader in
+                    ZStack {
+                        Asset.Images.loginBackground.swiftUIImage
+                            .resizable()
+                            .scaledToFill()
 
-                    VStack {
-                        Asset.Images.launchIcon.swiftUIImage
-                            .padding(.bottom, 91.0)
+                        VStack {
+                            Asset.Images.launchIcon.swiftUIImage
+                                .padding(.bottom, 91.0)
 
-                        loginTextFields(reader: reader)
+                            loginTextFields(reader: reader)
 
-                        loginButtons()
-                        .id(1)
-                    }
-                    .padding(.horizontal, 24)
+                            loginButtons()
+                                .id(1)
+                        }
+                        .padding(.horizontal, 24)
 
-                    if viewModel.presentAlert {
-                        customAlert(reader: reader)
+                        if viewModel.presentAlert {
+                            customAlert(reader: reader)
+                        }
                     }
                 }
             }
-        }
-        .ignoresSafeArea(.container)
-        .background(Asset.Colors.vibrantBlue.swiftUIColor)
-        .scrollDismissesKeyboard(.interactively)
-        .onAppear {
-            Task {
-                try await self.viewModel.getRequestToken()
+            .ignoresSafeArea(.container)
+            .background(Asset.Colors.vibrantBlue.swiftUIColor)
+            .scrollDismissesKeyboard(.interactively)
+            .onAppear {
+                Task {
+                    try await self.viewModel.getRequestToken()
+                }
             }
         }
     }

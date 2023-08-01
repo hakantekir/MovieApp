@@ -10,9 +10,14 @@ import SwiftUI
 
 struct MainView: View {
     @State var isActive = false
+    @ObservedObject var viewModel = MainViewModel()
     var body: some View {
         if isActive {
-            LoginView()
+            if viewModel.isLoggedIn() {
+                MoviesView()
+            } else {
+                LoginView()
+            }
         } else {
             LaunchView()
                 .onAppear {

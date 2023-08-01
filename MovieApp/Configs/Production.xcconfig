@@ -11,6 +11,7 @@
 
 PRODUCT_BUNDLE_IDENTIFIER = com.adesso.MovieAppHakan.prod
 BASE_URL = https:/$()/api.themoviedb.org/3/
+IMAGE_URL = https:/$()/image.tmdb.org/t/p/original/
 API_KEY = eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZGJjM2Q1YzRmNDY5ZTgxYWE1MjRjNzA3MmYwZWI2NyIsInN1YiI6IjY0YWZlMDg1ZDY1OTBiMDEzYmE0Y2JkOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.1Canhnh1iEvjLHx3lDpVkDFGnpKYcri8fzGufsDBAss
 RESET_PASSWORD_URL = https:/$()/www.themoviedb.org/reset-password/
 REGISTER_URL = https:/$()/www.themoviedb.org/signup/
