@@ -83,7 +83,9 @@ class LoginViewModel: ObservableObject {
         let requestModel = SessionRequestModel(requestToken: requestToken?.requestToken ?? "")
         let data = try? JSONEncoder().encode(requestModel)
         return try await NetworkService.shared.request(with: RequestObject(
-            url: LoginEndpoints.createSession.path
+            url: LoginEndpoints.createSession.path,
+            method: .post,
+            body: data
             ),
             responseModel: SessionResponseModel.self)
     }
