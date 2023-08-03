@@ -14,15 +14,15 @@ class TvSeriesViewModel: ObservableObject {
     @Published var topRatedTvSeries: TopRatedTvModel?
 
     func fetchPopularTvSeries() async {
-        popularTvSeries = try? await NetworkService.shared.request(endpoint: TvEndpoints.popular, responseModel: PopularTvModel.self)
+        popularTvSeries = try? await NetworkService.shared.request(with: RequestObject(url: TvEndpoints.popular.path), responseModel: PopularTvModel.self)
     }
 
     func fetchTopRatedTvSeries() async {
-        topRatedTvSeries = try? await NetworkService.shared.request(endpoint: TvEndpoints.topRated, responseModel: TopRatedTvModel.self)
+        topRatedTvSeries = try? await NetworkService.shared.request(with: RequestObject(url: TvEndpoints.topRated.path), responseModel: TopRatedTvModel.self)
     }
 
     func fetchTvGenres() async {
-        let genresResponse = try? await NetworkService.shared.request(endpoint: TvEndpoints.genres, responseModel: TvGenresModel.self)
+        let genresResponse = try? await NetworkService.shared.request(with: RequestObject(url: TvEndpoints.genres.path), responseModel: TvGenresModel.self)
         TvModel.genres = genresResponse?.genres
     }
 }

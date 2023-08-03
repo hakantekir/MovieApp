@@ -16,6 +16,6 @@ class TvDetailsViewModel: ObservableObject {
         self.tvSeriesID = tvSeriesID
     }
     func fetchTvSeriesDetails() async {
-        tvSeriesDetails = try? await NetworkService.shared.request(endpoint: TvEndpoints.tvDetails(tvID: tvSeriesID), responseModel: TvDetailsModel.self)
+        tvSeriesDetails = try? await NetworkService.shared.request(with: RequestObject(url: TvEndpoints.tvDetails(tvID: tvSeriesID).path), responseModel: TvDetailsModel.self)
     }
 }

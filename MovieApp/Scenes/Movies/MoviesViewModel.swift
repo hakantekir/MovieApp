@@ -14,15 +14,15 @@ class MoviesViewModel: ObservableObject {
     @Published var popularMovies: PopularMoviesModel?
 
     func fetchNowPlayingMovies() async {
-        nowPlayingMovies = try? await NetworkService.shared.request(endpoint: MovieEndpoints.nowPlaying, responseModel: NowPlayingMoviesModel.self)
+        nowPlayingMovies = try? await NetworkService.shared.request(with: RequestObject(url: MovieEndpoints.nowPlaying.path), responseModel: NowPlayingMoviesModel.self)
     }
 
     func fetchPopularMovies() async {
-        popularMovies = try? await NetworkService.shared.request(endpoint: MovieEndpoints.popular, responseModel: PopularMoviesModel.self)
+        popularMovies = try? await NetworkService.shared.request(with: RequestObject(url: MovieEndpoints.popular.path), responseModel: PopularMoviesModel.self)
     }
 
     func fetchMovieGenres() async {
-        let genresResponse = try? await NetworkService.shared.request(endpoint: MovieEndpoints.genres, responseModel: MovieGenresModel.self)
+        let genresResponse = try? await NetworkService.shared.request(with: RequestObject(url: MovieEndpoints.genres.path), responseModel: MovieGenresModel.self)
         MovieModel.genres = genresResponse?.genres
     }
 }

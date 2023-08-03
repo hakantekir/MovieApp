@@ -13,6 +13,6 @@ class MovieDetailsViewModel: ObservableObject {
     @Published var movieDetails: MovieDetailsModel?
 
     func fetchMovieDetails(movieId: Int) async {
-        movieDetails = try? await NetworkService.shared.request(endpoint: MovieEndpoints.movieDetails(movieID: movieId), responseModel: MovieDetailsModel.self)
+        movieDetails = try? await NetworkService.shared.request(with: RequestObject(url: MovieEndpoints.movieDetails(movieID: movieId).path), responseModel: MovieDetailsModel.self)
     }
 }
