@@ -17,13 +17,13 @@ enum MovieEndpoints: EndpointProtocol {
     var path: String {
         switch self {
             case .nowPlaying:
-                return (Configuration.baseURL ?? "") + "movie/now_playing" + LocaleEndpoint.deviceLanguage.path
+                return (Configuration.baseURL ?? "") + "movie/now_playing"
             case .popular:
-                return (Configuration.baseURL ?? "") + "movie/popular" + LocaleEndpoint.deviceLanguage.path
+                return (Configuration.baseURL ?? "") + "movie/popular"
             case .genres:
-                return (Configuration.baseURL ?? "") + "/genre/movie/list" + LocaleEndpoint.deviceLanguage.path
+                return (Configuration.baseURL ?? "") + "/genre/movie/list"
             case .movieDetails(let movieID):
-            return (Configuration.baseURL ?? "") + "/movie/" + String(movieID) + LocaleEndpoint.deviceLanguage.path
+            return (Configuration.baseURL ?? "") + "/movie/" + String(movieID)
         }
     }
 }
