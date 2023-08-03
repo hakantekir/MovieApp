@@ -18,7 +18,10 @@ class LoginViewModel: ObservableObject {
     var requestToken: AuthenticationTokenResponseModel?
 
     func getRequestToken() async throws {
-        requestToken = try await NetworkService.shared.request(endpoint: LoginEndpoints.authenticationToken, responseModel: AuthenticationTokenResponseModel.self)
+        requestToken = try await NetworkService.shared.request(with: RequestObject(
+            url: LoginEndpoints.authenticationToken.path
+            ),
+            responseModel: AuthenticationTokenResponseModel.self)
     }
 
     func login() async {
@@ -65,20 +68,24 @@ class LoginViewModel: ObservableObject {
     }
 
     private func validateUser() async throws -> LoginResponseModel {
-        try await NetworkService.shared.request(
-            endpoint: LoginEndpoints.loginWithToken(
-                username: username,
-                password: password,
-                token: requestToken?.requestToken ?? ""
+        let requestModel = LoginRequestModel(username: username, password: password, requestToken: requestToken?.requestToken ?? "")
+        return try await NetworkService.shared.request(with: RequestObject(
+            url: LoginEndpoints.loginWithToken.path,
+            method: .post,
+            body: requestModel
             ),
-            responseModel: LoginResponseModel.self)
+            responseModel: LoginResponseModel.self
+        )
     }
 
     private func createSession() async throws -> SessionResponseModel {
-        try await NetworkService.shared.request(
-            endpoint: LoginEndpoints.createSession(
-                requestToken: requestToken?.requestToken ?? ""
-            ), responseModel: SessionResponseModel.self)
+        let requestModel = SessionRequestModel(requestToken: requestToken?.requestToken ?? "")
+        return try await NetworkService.shared.request(with: RequestObject(
+            url: LoginEndpoints.createSession.path,
+            method: .post,
+            body: requestModel
+            ),
+            responseModel: SessionResponseModel.self)
     }
 
     private func saveSessionId(with sessionId: String) -> Bool {

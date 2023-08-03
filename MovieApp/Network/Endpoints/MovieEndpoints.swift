@@ -22,17 +22,8 @@ enum MovieEndpoints: EndpointProtocol {
                 return (Configuration.baseURL ?? "") + "movie/popular"
             case .genres:
                 return (Configuration.baseURL ?? "") + "/genre/movie/list"
-            case .movieDetails:
-                return (Configuration.baseURL ?? "") + "/movie/"
-        }
-    }
-
-    func createObjectRequest() -> RequestObject {
-        switch self {
             case .movieDetails(let movieID):
-                return RequestObject(url: self.path + String(movieID))
-            default:
-                return RequestObject(url: self.path)
+            return (Configuration.baseURL ?? "") + "/movie/" + String(movieID)
         }
     }
 }

@@ -10,6 +10,4 @@ import Foundation
 
 protocol EndpointProtocol {
     var path: String { get }
-
-    func createObjectRequest() -> RequestObject
 }

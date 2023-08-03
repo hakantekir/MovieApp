@@ -1,16 +1,18 @@
 //
-//  MovieDetailsView.swift
+//  TvSeriesDetailsView.swift
 //  MovieApp
 //
-//  Created by Hakan Tekir on 31.07.2023.
+//  Created by Akgoz, Ilgin on 1.08.2023.
 //  Copyright © 2023 Adesso Turkey. All rights reserved.
 //
 
 import SwiftUI
 
-struct MovieDetailsView: View {
-    let media: MovieModel
-    @ObservedObject var viewModel = MovieDetailsViewModel()
+struct TvSeriesDetailsView: View {
+    @ObservedObject private var viewModel: TvDetailsViewModel
+    init(viewModel: TvDetailsViewModel) {
+        _viewModel = ObservedObject(wrappedValue: viewModel)
+    }
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         GeometryReader { reader in
@@ -18,16 +20,7 @@ struct MovieDetailsView: View {
                 VStack(alignment: .leading) {
                     posterImage(reader: reader)
                         .frame(height: reader.size.height/2 + 12)
-
                     movieDetails()
-                        .onAppear {
-                            Task {
-                                guard let id = media.id else {
-                                    return
-                                }
-                                await viewModel.fetchMovieDetails(movieId: id)
-                            }
-                        }
                 }
             }
             .navigationBarBackButtonHidden()
@@ -41,14 +34,20 @@ struct MovieDetailsView: View {
                     }
                 }
             }
-        }.ignoresSafeArea()
+        }
+        .ignoresSafeArea()
+        .onAppear {
+            Task {
+                await viewModel.fetchTvSeriesDetails()
+            }
+        }
     }
 }
 
-extension MovieDetailsView {
+extension TvSeriesDetailsView {
     private func posterImage(reader: GeometryProxy) -> some View {
         ZStack(alignment: .top) {
-            AsyncImage(url: URL(string: (Configuration.imageURL ?? "") + (media.posterPath ?? "")),
+            AsyncImage(url: URL(string: (Configuration.imageURL ?? "") + (viewModel.tvSeriesDetails?.posterPath ?? "")),
                        content: { image in
                 image
                     .resizable()
@@ -61,7 +60,7 @@ extension MovieDetailsView {
             VStack {
                 Spacer()
                 HStack {
-                    MediaVoteView(vote: media.voteAverage ?? 0.0)
+                    MediaVoteView(vote: viewModel.tvSeriesDetails?.voteAverage ?? 0.0)
                         .padding(.leading, 24)
                     Spacer()
                 }
@@ -71,30 +70,39 @@ extension MovieDetailsView {
 
     private func movieDetails() -> some View {
         VStack(alignment: .leading) {
-            Text(media.title ?? "Title")
+            Text(viewModel.tvSeriesDetails?.name ?? "Title")
                 .font(.system(size: 28).bold())
                 .padding(.bottom, 5)
 
-            Text(media.genreNames)
+            Text(viewModel.tvSeriesDetails?.genresText ?? "")
                 .font(.system(size: 15))
                 .padding(.bottom, 10)
 
             HStack {
                 Asset.Images.time.swiftUIImage
-                Text(viewModel.movieDetails?.runtimeText ?? "")
+                Text(viewModel.tvSeriesDetails?.runtimeText ?? "")
                     .foregroundColor(Asset.Colors.almostBlack.swiftUIColor)
                     .font(.system(size: 15))
 
                 Asset.Images.calendar.swiftUIImage
-                Text(media.localizedReleaseDate ?? "")
+                Text(viewModel.tvSeriesDetails?.firstAndLastAirDateText ?? "")
                     .foregroundColor(Asset.Colors.almostBlack.swiftUIColor)
                     .font(.system(size: 15))
 
                 Spacer()
             }
-
-            Text(media.overview ?? "")
+            ZStack {
+                Rectangle()
+                    .frame(width: 81, height: 24)
+                    .cornerRadius(12)
+                    .foregroundColor(Color(red: 57/255, green: 58/255, blue: 59/255))
+                Text(viewModel.tvSeriesDetails?.seasonsText ?? "")
+                    .foregroundColor(Asset.Colors.white.swiftUIColor)
+                    .font(.system(size: 12) .weight(.bold))
+            }
+            Text(viewModel.tvSeriesDetails?.overview ?? "")
                 .font(.system(size: 17))
-        }.padding(.horizontal, 24)
+        }
+        .padding(.horizontal, 24)
     }
 }

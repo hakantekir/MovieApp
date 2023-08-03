@@ -24,3 +24,10 @@
 
 "movies" = "Filmler";
 "popular" = "Popüler";
+
+"tvSeries_navigationTitle" = "Diziler";
+"tvSeries_topRated" = "En Yüksek Puanlılar";
+
+"tvSeriesDetails_duration" = "dk";
+"tvSeriesDetails_seasons" = "sezon";
+"tvSeriesDetails_tvSeries" = "Dizi";

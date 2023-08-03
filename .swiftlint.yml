@@ -3,6 +3,7 @@ disabled_rules: # rule identifiers to exclude from running
   - nesting
   - function_parameter_count
   - type_name
+  - let_var_whitespace
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Pods
   - Project/R.generated.swift
@@ -26,6 +27,7 @@ line_length:
 
 disabled_rules:
   - todo
+  - let_var_whitespace
 
 large_tuple: # warn user when using 3 values in tuple, give error if there are 4
    - 3

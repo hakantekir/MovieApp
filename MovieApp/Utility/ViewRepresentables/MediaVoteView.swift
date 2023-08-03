@@ -13,8 +13,8 @@ struct MediaVoteView: View {
     var body: some View {
         HStack {
             Asset.Images.star.swiftUIImage
-            Text(String(vote))
-                .font(.system(size: 12))
+            Text(String(format: "%.1f", vote))
+                .font(.system(size: 12) .weight(.bold))
         }
         .foregroundColor(Asset.Colors.white.swiftUIColor)
         .padding(.horizontal, 10)

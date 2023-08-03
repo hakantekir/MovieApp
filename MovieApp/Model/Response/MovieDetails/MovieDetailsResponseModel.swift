@@ -60,6 +60,10 @@ struct MovieDetailsModel: Decodable {
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
     }
+    var runtimeText: String {
+        let runtime = runtime ?? 0
+        return String(format: "%d %@", runtime, L10n.tvSeriesDetailsDuration)
+    }
 }
 
 struct ProductionCompany: Codable {

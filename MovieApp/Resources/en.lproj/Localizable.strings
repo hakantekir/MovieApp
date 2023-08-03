@@ -24,3 +24,10 @@
 
 "movies" = "Movies";
 "popular" = "Popular";
+
+"tvSeries_navigationTitle" = "TV Series";
+"tvSeries_topRated" = "Top Rated";
+
+"tvSeriesDetails_duration" = "min";
+"tvSeriesDetails_seasons" = "seasons";
+"tvSeriesDetails_tvSeries" = "TV Series";
