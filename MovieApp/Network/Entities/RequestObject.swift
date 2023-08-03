@@ -13,13 +13,13 @@ struct RequestObject {
     let language: String
     let method: HTTPMethod
     var headers: [String: String]?
-    var body: Data?
+    var body: Encodable?
 
     init(url: String,
          language: String = LocaleEndpoint.deviceLanguage.path,
          method: HTTPMethod = .get,
          headers: [String: String] = [:],
-         body: Data? = nil) {
+         body: Encodable? = nil) {
         self.url = url + language
         self.language = language
         self.method = method

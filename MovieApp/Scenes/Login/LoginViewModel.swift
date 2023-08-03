@@ -69,11 +69,10 @@ class LoginViewModel: ObservableObject {
 
     private func validateUser() async throws -> LoginResponseModel {
         let requestModel = LoginRequestModel(username: username, password: password, requestToken: requestToken?.requestToken ?? "")
-        let data = try? JSONEncoder().encode(requestModel)
         return try await NetworkService.shared.request(with: RequestObject(
             url: LoginEndpoints.loginWithToken.path,
             method: .post,
-            body: data
+            body: requestModel
             ),
             responseModel: LoginResponseModel.self
         )
@@ -81,11 +80,10 @@ class LoginViewModel: ObservableObject {
 
     private func createSession() async throws -> SessionResponseModel {
         let requestModel = SessionRequestModel(requestToken: requestToken?.requestToken ?? "")
-        let data = try? JSONEncoder().encode(requestModel)
         return try await NetworkService.shared.request(with: RequestObject(
             url: LoginEndpoints.createSession.path,
             method: .post,
-            body: data
+            body: requestModel
             ),
             responseModel: SessionResponseModel.self)
     }

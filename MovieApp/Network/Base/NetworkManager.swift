@@ -36,7 +36,7 @@ class NetworkManager {
         request.setValue(token, forHTTPHeaderField: "Authorization")
         request.allHTTPHeaderFields = requestObject.headers
 
-        request.httpBody = requestObject.body
+        request.httpBody = requestObject.body?.encode()
 
         return request
     }
