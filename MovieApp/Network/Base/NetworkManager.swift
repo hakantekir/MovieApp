@@ -17,7 +17,7 @@ class NetworkManager {
         guard let statusCode = (response as? HTTPURLResponse)?.statusCode else { throw NetworkError.badResponse }
         guard successCodeRange.contains(statusCode) else { throw NetworkError.httpError(status: HTTPStatus(rawValue: statusCode) ?? .notValidCode, data: data) }
         do {
-            let decodedData = try JSONDecoder().decode(responseModel, from: data)
+            let decodedData = try JSONDecoder.customDecoder.decode(responseModel, from: data)
             return decodedData
         } catch {
             throw NetworkError.mappingFailed(data: data)

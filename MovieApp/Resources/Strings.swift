@@ -46,6 +46,16 @@ internal enum L10n {
   internal static let sourceSelectTitle = L10n.tr("Localizable", "source_select_title", fallback: "Select a source")
   /// Take a Photo
   internal static let takePhoto = L10n.tr("Localizable", "take_photo", fallback: "Take a Photo")
+  /// TV Series
+  internal static let tvSeriesNavigationTitle = L10n.tr("Localizable", "tvSeries_navigationTitle", fallback: "TV Series")
+  /// Top Rated
+  internal static let tvSeriesTopRated = L10n.tr("Localizable", "tvSeries_topRated", fallback: "Top Rated")
+  /// min
+  internal static let tvSeriesDetailsDuration = L10n.tr("Localizable", "tvSeriesDetails_duration", fallback: "min")
+  /// seasons
+  internal static let tvSeriesDetailsSeasons = L10n.tr("Localizable", "tvSeriesDetails_seasons", fallback: "seasons")
+  /// TV Series
+  internal static let tvSeriesDetailsTvSeries = L10n.tr("Localizable", "tvSeriesDetails_tvSeries", fallback: "TV Series")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

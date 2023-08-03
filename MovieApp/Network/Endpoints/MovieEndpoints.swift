@@ -17,11 +17,11 @@ enum MovieEndpoints: EndpointProtocol {
     var path: String {
         switch self {
             case .nowPlaying:
-                return (Configuration.baseURL ?? "") + "movie/now_playing"
+                return (Configuration.baseURL ?? "") + "movie/now_playing" + LocaleEndpoint.deviceLanguage.path
             case .popular:
-                return (Configuration.baseURL ?? "") + "movie/popular"
+                return (Configuration.baseURL ?? "") + "movie/popular" + LocaleEndpoint.deviceLanguage.path
             case .genres:
-                return (Configuration.baseURL ?? "") + "/genre/movie/list"
+                return (Configuration.baseURL ?? "") + "/genre/movie/list" + LocaleEndpoint.deviceLanguage.path
             case .movieDetails:
                 return (Configuration.baseURL ?? "") + "/movie/"
         }
@@ -30,7 +30,7 @@ enum MovieEndpoints: EndpointProtocol {
     func createObjectRequest() -> RequestObject {
         switch self {
             case .movieDetails(let movieID):
-                return RequestObject(url: self.path + String(movieID))
+                return RequestObject(url: self.path + String(movieID) + LocaleEndpoint.deviceLanguage.path)
             default:
                 return RequestObject(url: self.path)
         }

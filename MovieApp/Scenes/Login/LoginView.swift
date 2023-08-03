@@ -15,7 +15,7 @@ struct LoginView: View {
 
     var body: some View {
         if viewModel.showMoviesView {
-            MoviesView()
+            TabBarView()
         } else {
             ScrollView(showsIndicators: false) {
                 ScrollViewReader { reader in
@@ -86,6 +86,7 @@ extension LoginView {
         }
     }
 
+    // swiftlint:disable function_body_length
     private func loginButtons() -> some View {
         Group {
             HStack {
@@ -146,6 +147,7 @@ extension LoginView {
             }
         }
     }
+    // swiftlint:enable function_body_length
 
     private func customAlert(reader: ScrollViewProxy) -> some View {
         CustomAlert(message: viewModel.alertMessage, buttonLabel: "Okey") {

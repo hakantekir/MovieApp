@@ -12,20 +12,20 @@ struct MainView: View {
     @State var isActive = false
     @ObservedObject var viewModel = MainViewModel()
     var body: some View {
-        if isActive {
+         if isActive {
             if viewModel.isLoggedIn() {
-                MoviesView()
+                TabBarView()
             } else {
                 LoginView()
             }
-        } else {
-            LaunchView()
-                .onAppear {
-                    withAnimation(.easeIn(duration: 1).delay(1)) {
-                        isActive = true
-                    }
-                }
-        }
+         } else {
+             LaunchView()
+                 .onAppear {
+                     withAnimation(.easeIn(duration: 1).delay(1)) {
+                         isActive = true
+                     }
+                 }
+         }
     }
 }
 
