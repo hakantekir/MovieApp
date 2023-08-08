@@ -31,3 +31,7 @@
 "tvSeriesDetails_duration" = "min";
 "tvSeriesDetails_seasons" = "seasons";
 "tvSeriesDetails_tvSeries" = "TV Series";
+
+"actorDetails_showBio" = "See full bio >>";
+"actorDetails_hideBio" = "See less >>";
+"actorDetails_born" = "Born:";

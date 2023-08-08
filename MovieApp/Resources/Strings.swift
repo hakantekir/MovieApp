@@ -10,6 +10,12 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
+  /// Born: 
+  internal static let actorDetailsBorn = L10n.tr("Localizable", "actorDetails_born", fallback: "Born: ")
+  /// See less >>
+  internal static let actorDetailsHideBio = L10n.tr("Localizable", "actorDetails_hideBio", fallback: "See less >>")
+  /// See full bio >>
+  internal static let actorDetailsShowBio = L10n.tr("Localizable", "actorDetails_showBio", fallback: "See full bio >>")
   /// Delete Image
   internal static let deleteImage = L10n.tr("Localizable", "delete_image", fallback: "Delete Image")
   /// Don't have an account?

@@ -31,3 +31,7 @@
 "tvSeriesDetails_duration" = "dk";
 "tvSeriesDetails_seasons" = "sezon";
 "tvSeriesDetails_tvSeries" = "Dizi";
+
+"actorDetails_showBio" = "Tamamını gör >>";
+"actorDetails_hideBio" = "Daha az gör >>";
+"actorDetails_born" = "Doğum tarihi:";
