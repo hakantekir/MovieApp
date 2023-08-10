@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct ActorDetailsResponseModel: Codable {
+struct ActorDetailsResponseModel: Decodable {
     let adult: Bool?
     let alsoKnownAs: [String]?
-    let biography, birthday: String?
-    let deathday: Date?
+    let biography: String?
+    let birthday, deathday: Date?
     let gender: Int?
     let homepage: String?
     let id: Int?
@@ -30,5 +30,9 @@ struct ActorDetailsResponseModel: Codable {
         case placeOfBirth = "place_of_birth"
         case popularity
         case profilePath = "profile_path"
+    }
+
+    var bornText: String {
+        "\(DateFormatter.localizedDateFormatter.string(from: birthday ?? .now)) - \(placeOfBirth ?? "Unknown")"
     }
 }

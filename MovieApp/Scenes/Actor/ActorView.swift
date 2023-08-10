@@ -18,10 +18,11 @@ struct ActorView: View {
     }
     var body: some View {
         GeometryReader { reader in
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading) {
                     profileImage(reader: reader)
                     actorDetails()
+                    medias()
                 }
             }
             .navigationBarBackButtonHidden()
@@ -36,10 +37,11 @@ struct ActorView: View {
                 }
             }
         }
-        .ignoresSafeArea()
+        .edgesIgnoringSafeArea(.top)
         .onAppear {
             Task {
                 await viewModel.fetchDetails()
+                await viewModel.fetchMedias()
             }
         }
     }
@@ -83,7 +85,7 @@ extension ActorView {
             HStack {
                 Text(L10n.actorDetailsBorn)
                     .bold()
-                Text(viewModel.actorDetails?.birthday ?? "")
+                Text(viewModel.actorDetails?.bornText ?? "")
             }
             .font(.system(size: 17))
 
@@ -92,10 +94,13 @@ extension ActorView {
         .padding(.horizontal, 24)
     }
 
-    func movies() -> some View {
+    func medias() -> some View {
         VStack {
-            
+            ForEach(viewModel.credits ?? [], id: \.self) { media in
+                ActorMediaView(media: media)
+            }
         }
+        .padding(.horizontal, 24)
     }
 }
 

@@ -14,4 +14,14 @@ extension DateFormatter {
         dateFormatter.dateFormat = "yyyy"
         return dateFormatter
     }()
+
+    static let localizedDateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        dateFormatter.timeZone = TimeZone.autoupdatingCurrent
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        return dateFormatter
+    }()
 }

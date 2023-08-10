@@ -16,7 +16,7 @@ struct MediaCardView: View {
                     ForEach(movies, id: \.id) { movie in
                         VStack {
                             NavigationLink {
-                                MovieDetailsView(media: movie)
+                                MovieDetailsView(id: movie.id ?? 0)
                             } label: {
                                 AsyncImage(url: URL(string: (Configuration.imageURL ?? "") + (movie.posterPath ?? "")),
                                            content: { image in

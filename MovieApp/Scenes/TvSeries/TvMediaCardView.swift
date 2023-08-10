@@ -16,7 +16,7 @@ struct TvMediaCardView: View {
                     ForEach(tvSeriesCollection, id: \.id) { tvSeries in
                         VStack {
                             NavigationLink {
-                                TvSeriesDetailsView(viewModel: TvDetailsViewModel(tvSeriesID: tvSeries.id ?? 0))
+                                TvSeriesDetailsView(id: tvSeries.id ?? 0)
                             } label: {
                                 posterImage(tvSeries: tvSeries, reader: reader)
                             }

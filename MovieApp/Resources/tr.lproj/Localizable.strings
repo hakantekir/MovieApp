@@ -25,12 +25,16 @@
 "movies" = "Filmler";
 "popular" = "Popüler";
 
+"movieDetails_cast" = "Oyuncular";
+"movieDetails_duration" = "dk";
+
 "tvSeries_navigationTitle" = "Diziler";
 "tvSeries_topRated" = "En Yüksek Puanlılar";
 
 "tvSeriesDetails_duration" = "dk";
 "tvSeriesDetails_seasons" = "sezon";
 "tvSeriesDetails_tvSeries" = "Dizi";
+"tvSeriesDetails_cast" = "Oyuncular";
 
 "actorDetails_showBio" = "Tamamını gör >>";
 "actorDetails_hideBio" = "Daha az gör >>";

@@ -9,25 +9,29 @@
 import SwiftUI
 
 struct MovieDetailsView: View {
-    let media: MovieModel
-    @ObservedObject var viewModel = MovieDetailsViewModel()
+    @ObservedObject var viewModel: MovieDetailsViewModel
     @Environment(\.dismiss) private var dismiss
+
+    init(id: Int) {
+        viewModel = MovieDetailsViewModel(id: id)
+    }
+
     var body: some View {
         GeometryReader { reader in
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading) {
                     posterImage(reader: reader)
                         .frame(height: reader.size.height/2 + 12)
 
                     movieDetails()
-                        .onAppear {
-                            Task {
-                                guard let id = media.id else {
-                                    return
-                                }
-                                await viewModel.fetchMovieDetails(movieId: id)
-                            }
-                        }
+
+                    cast()
+                }
+                .onAppear {
+                    Task {
+                        await viewModel.fetchMovieDetails()
+                        await viewModel.fetchCredits()
+                    }
                 }
             }
             .navigationBarBackButtonHidden()
@@ -41,14 +45,15 @@ struct MovieDetailsView: View {
                     }
                 }
             }
-        }.ignoresSafeArea()
+        }
+        .edgesIgnoringSafeArea(.top)
     }
 }
 
 extension MovieDetailsView {
     private func posterImage(reader: GeometryProxy) -> some View {
         ZStack(alignment: .top) {
-            AsyncImage(url: URL(string: (Configuration.imageURL ?? "") + (media.posterPath ?? "")),
+            AsyncImage(url: URL(string: (Configuration.imageURL ?? "") + (viewModel.movieDetails?.posterPath ?? "")),
                        content: { image in
                 image
                     .resizable()
@@ -61,7 +66,7 @@ extension MovieDetailsView {
             VStack {
                 Spacer()
                 HStack {
-                    MediaVoteView(vote: media.voteAverage ?? 0.0)
+                    MediaVoteView(vote: viewModel.movieDetails?.voteAverage ?? 0.0)
                         .padding(.leading, 24)
                     Spacer()
                 }
@@ -71,11 +76,11 @@ extension MovieDetailsView {
 
     private func movieDetails() -> some View {
         VStack(alignment: .leading) {
-            Text(media.title ?? "Title")
+            Text(viewModel.movieDetails?.title ?? "Title")
                 .font(.system(size: 28).bold())
                 .padding(.bottom, 5)
 
-            Text(media.genreNames)
+            Text(viewModel.movieDetails?.genresText ?? "")
                 .font(.system(size: 15))
                 .padding(.bottom, 10)
 
@@ -86,15 +91,46 @@ extension MovieDetailsView {
                     .font(.system(size: 15))
 
                 Asset.Images.calendar.swiftUIImage
-                Text(media.localizedReleaseDate ?? "")
+                Text(viewModel.movieDetails?.localizedReleaseDate ?? "")
                     .foregroundColor(Asset.Colors.almostBlack.swiftUIColor)
                     .font(.system(size: 15))
 
                 Spacer()
             }
 
-            Text(media.overview ?? "")
+            Divider()
+                .padding(.vertical, 20)
+
+            Text(viewModel.movieDetails?.overview ?? "")
                 .font(.system(size: 17))
+                .padding(.bottom, 25)
+                .lineSpacing(7)
         }.padding(.horizontal, 24)
+    }
+
+    private func cast() -> some View {
+        VStack(alignment: .leading) {
+            Text(L10n.movieDetailsCast)
+                .font(.system(size: 28).bold())
+                .foregroundColor(Asset.Colors.almostBlack.swiftUIColor)
+                .padding(.horizontal, 24)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(viewModel.cast?.cast ?? [], id: \.id) { actor in
+                        ActorItemView(id: actor.id ?? 0,
+                                      name: actor.name ?? "",
+                                      imagePath: actor.profilePath ?? "")
+                    }
+                }
+            }
+        }
+    }
+}
+
+struct MovieDetailsView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationStack {
+            MovieDetailsView(id: 569094)
+        }
     }
 }

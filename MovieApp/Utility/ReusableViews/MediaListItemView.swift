@@ -12,7 +12,7 @@ struct MediaListItemView: View {
     let media: MovieModel
     var body: some View {
         NavigationLink {
-            MovieDetailsView(media: media)
+            MovieDetailsView(id: media.id ?? 0)
         } label: {
             HStack {
                 AsyncImage(url: URL(string: (Configuration.imageURL ?? "") + (media.posterPath ?? "")),
