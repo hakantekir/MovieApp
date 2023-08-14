@@ -27,6 +27,7 @@ class NetworkManager {
     private func prepareURLRequest(with requestObject: RequestObject) throws -> URLRequest {
         guard let url = URL(string: requestObject.url) else { throw NetworkError.badURL(requestObject.url) }
         var request = URLRequest(url: url)
+        request.url?.append(queryItems: [.init(name: "language", value: requestObject.language)])
         request.httpMethod = requestObject.method.rawValue
 
         let token = "Bearer " + (Configuration.apiKey ?? "")
