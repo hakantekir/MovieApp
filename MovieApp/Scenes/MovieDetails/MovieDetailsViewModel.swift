@@ -10,12 +10,25 @@ import Foundation
 
 @MainActor
 class MovieDetailsViewModel: ObservableObject {
+    let id: Int
     @Published var movieDetails: MovieDetailsModel?
+    @Published var cast: ActorsResponseModel?
 
-    func fetchMovieDetails(movieId: Int) async {
+    init(id: Int) {
+        self.id = id
+    }
+
+    func fetchMovieDetails() async {
         movieDetails = try? await NetworkService.shared.request(with: RequestObject(
-        url: MovieEndpoints.movieDetails(movieID: movieId).path),
-        responseModel: MovieDetailsModel.self
+            url: MovieDetailsEndpoints.details(movieID: id).path),
+                                                                responseModel: MovieDetailsModel.self
+        )
+    }
+
+    func fetchCredits() async {
+        cast = try? await NetworkService.shared.request(with: RequestObject(
+            url: MovieDetailsEndpoints.credits(movieID: id).path),
+                                                        responseModel: ActorsResponseModel.self
         )
     }
 }

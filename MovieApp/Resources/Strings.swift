@@ -10,6 +10,12 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
+  /// Born:
+  internal static let actorDetailsBorn = L10n.tr("Localizable", "actorDetails_born", fallback: "Born:")
+  /// See less >>
+  internal static let actorDetailsHideBio = L10n.tr("Localizable", "actorDetails_hideBio", fallback: "See less >>")
+  /// See full bio >>
+  internal static let actorDetailsShowBio = L10n.tr("Localizable", "actorDetails_showBio", fallback: "See full bio >>")
   /// Delete Image
   internal static let deleteImage = L10n.tr("Localizable", "delete_image", fallback: "Delete Image")
   /// Don't have an account?
@@ -26,6 +32,10 @@ internal enum L10n {
   internal static let helloWorld = L10n.tr("Localizable", "Hello, World!", fallback: "Hello")
   /// Login
   internal static let login = L10n.tr("Localizable", "login", fallback: "Login")
+  /// Cast
+  internal static let movieDetailsCast = L10n.tr("Localizable", "movieDetails_cast", fallback: "Cast")
+  /// min
+  internal static let movieDetailsDuration = L10n.tr("Localizable", "movieDetails_duration", fallback: "min")
   /// Movies
   internal static let movies = L10n.tr("Localizable", "movies", fallback: "Movies")
   /// Password
@@ -50,6 +60,8 @@ internal enum L10n {
   internal static let tvSeriesNavigationTitle = L10n.tr("Localizable", "tvSeries_navigationTitle", fallback: "TV Series")
   /// Top Rated
   internal static let tvSeriesTopRated = L10n.tr("Localizable", "tvSeries_topRated", fallback: "Top Rated")
+  /// Cast
+  internal static let tvSeriesDetailsCast = L10n.tr("Localizable", "tvSeriesDetails_cast", fallback: "Cast")
   /// min
   internal static let tvSeriesDetailsDuration = L10n.tr("Localizable", "tvSeriesDetails_duration", fallback: "min")
   /// seasons

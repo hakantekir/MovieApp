@@ -16,7 +16,9 @@ struct MovieModel: Decodable, Identifiable {
     let originalLanguage: String?
     let originalTitle, overview: String?
     let popularity: Double?
-    let posterPath, releaseDate, title: String?
+    let posterPath: String?
+    let releaseDate: Date?
+    let title: String?
     let video: Bool?
     let voteAverage: Double?
     let voteCount: Int?
@@ -39,7 +41,6 @@ struct MovieModel: Decodable, Identifiable {
 
 extension MovieModel {
     static var genres: [Genre]?
-    static private let dateFormatter = DateFormatter()
     var genreNames: String {
         guard let genres = MovieModel.genres, let genreIDS else {
             return ""
@@ -56,13 +57,7 @@ extension MovieModel {
     }
 
     var localizedReleaseDate: String? {
-        MovieModel.dateFormatter.dateFormat = "yyyy-MM-dd"
-        MovieModel.dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        guard let date = MovieModel.dateFormatter.date(from: releaseDate ?? "") else { return nil }
-        MovieModel.dateFormatter.timeZone = TimeZone.autoupdatingCurrent
-        MovieModel.dateFormatter.dateStyle = .medium
-        MovieModel.dateFormatter.timeStyle = .none
-        return MovieModel.dateFormatter.string(from: date)
+        DateFormatter.localizedDateFormatter.string(from: releaseDate ?? .now)
     }
 }
 

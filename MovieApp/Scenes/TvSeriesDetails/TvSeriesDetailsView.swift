@@ -10,17 +10,24 @@ import SwiftUI
 
 struct TvSeriesDetailsView: View {
     @ObservedObject private var viewModel: TvDetailsViewModel
-    init(viewModel: TvDetailsViewModel) {
-        _viewModel = ObservedObject(wrappedValue: viewModel)
-    }
     @Environment(\.dismiss) private var dismiss
+
+    init(id: Int) {
+        viewModel = TvDetailsViewModel(tvSeriesID: id)
+    }
+
     var body: some View {
         GeometryReader { reader in
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading) {
                     posterImage(reader: reader)
                         .frame(height: reader.size.height/2 + 12)
+
                     movieDetails()
+
+                    if !(viewModel.cast?.cast?.isEmpty ?? true) {
+                        cast()
+                    }
                 }
             }
             .navigationBarBackButtonHidden()
@@ -35,10 +42,11 @@ struct TvSeriesDetailsView: View {
                 }
             }
         }
-        .ignoresSafeArea()
+        .edgesIgnoringSafeArea(.top)
         .onAppear {
             Task {
                 await viewModel.fetchTvSeriesDetails()
+                await viewModel.fetchCredits()
             }
         }
     }
@@ -91,18 +99,45 @@ extension TvSeriesDetailsView {
 
                 Spacer()
             }
-            ZStack {
-                Rectangle()
-                    .frame(width: 81, height: 24)
-                    .cornerRadius(12)
-                    .foregroundColor(Color(red: 57/255, green: 58/255, blue: 59/255))
-                Text(viewModel.tvSeriesDetails?.seasonsText ?? "")
-                    .foregroundColor(Asset.Colors.white.swiftUIColor)
-                    .font(.system(size: 12) .weight(.bold))
-            }
+
             Text(viewModel.tvSeriesDetails?.overview ?? "")
                 .font(.system(size: 17))
+                .lineSpacing(7)
+
+            Text(viewModel.tvSeriesDetails?.seasonsText ?? "")
+                .foregroundColor(Asset.Colors.white.swiftUIColor)
+                .font(.system(size: 12) .weight(.bold))
+                .padding(.horizontal, 10)
+                .padding(.vertical, 5)
+                .background(Color(red: 57/255, green: 58/255, blue: 59/255))
+                .cornerRadius(12)
         }
         .padding(.horizontal, 24)
+    }
+
+    private func cast() -> some View {
+        VStack(alignment: .leading) {
+            Text(L10n.tvSeriesDetailsCast)
+                .font(.system(size: 28).bold())
+                .foregroundColor(Asset.Colors.almostBlack.swiftUIColor)
+                .padding(.horizontal, 24)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(viewModel.cast?.cast ?? [], id: \.id) { actor in
+                        ActorItemView(id: actor.id ?? 0,
+                                      name: actor.name ?? "",
+                                      imagePath: actor.profilePath ?? "")
+                    }
+                }
+            }
+        }
+    }
+}
+
+struct TvSeriesDetailsView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationStack {
+            TvSeriesDetailsView(id: 1396)
+        }
     }
 }

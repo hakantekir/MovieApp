@@ -20,7 +20,7 @@ struct TvSmallCardView: View {
                         .frame(width: 153, height: 310)
                     VStack {
                         NavigationLink {
-                            TvSeriesDetailsView(viewModel: TvDetailsViewModel(tvSeriesID: tvSeries.id ?? 0))
+                            TvSeriesDetailsView(id: tvSeries.id ?? 0)
                         } label: {
                             posterImage(tvSeries: tvSeries)
                         }

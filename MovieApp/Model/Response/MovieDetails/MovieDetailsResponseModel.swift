@@ -23,7 +23,7 @@ struct MovieDetailsModel: Decodable {
     let posterPath: String?
     let productionCompanies: [ProductionCompany]?
     let productionCountries: [ProductionCountry]?
-    let releaseDate: String?
+    let releaseDate: Date?
     let revenue: Int?
     let runtime: Int?
     let spokenLanguages: [SpokenLanguage]?
@@ -60,9 +60,23 @@ struct MovieDetailsModel: Decodable {
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
     }
+}
+
+extension MovieDetailsModel {
+    static var genres: [Genre]?
+
+    var genresText: String {
+        let firstThreeGenres = genres?.prefix(3).map { $0 } ?? []
+        return firstThreeGenres.map { $0.name ?? "" }.joined(separator: ", ")
+    }
+
+    var localizedReleaseDate: String? {
+        DateFormatter.localizedDateFormatter.string(from: releaseDate ?? .now)
+    }
+
     var runtimeText: String {
         let runtime = runtime ?? 0
-        return String(format: "%d %@", runtime, L10n.tvSeriesDetailsDuration)
+        return String(format: "%d %@", runtime, L10n.movieDetailsDuration)
     }
 }
 
