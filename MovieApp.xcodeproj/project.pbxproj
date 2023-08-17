@@ -32,7 +32,7 @@
 		681FE3562A7A3A2E006C49E1 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681FE3552A7A3A2E006C49E1 /* TabBarView.swift */; };
 		681FE3582A7A464A006C49E1 /* TvSmallCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681FE3572A7A464A006C49E1 /* TvSmallCardView.swift */; };
 		681FE35A2A7A4CCD006C49E1 /* RoundedCornerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681FE3592A7A4CCD006C49E1 /* RoundedCornerModifier.swift */; };
-		681FE35C2A7A83FA006C49E1 /* LocaleEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681FE35B2A7A83FA006C49E1 /* LocaleEndpoint.swift */; };
+		681FE35C2A7A83FA006C49E1 /* LocaleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681FE35B2A7A83FA006C49E1 /* LocaleManager.swift */; };
 		681FE35E2A7B964E006C49E1 /* JSONDecoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681FE35D2A7B964E006C49E1 /* JSONDecoderExtension.swift */; };
 		681FE3602A7B967F006C49E1 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681FE35F2A7B967F006C49E1 /* DateFormatterExtension.swift */; };
 		681FE3622A7BD7F4006C49E1 /* EncodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681FE3612A7BD7F4006C49E1 /* EncodableExtension.swift */; };
@@ -219,7 +219,7 @@
 		681FE3552A7A3A2E006C49E1 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		681FE3572A7A464A006C49E1 /* TvSmallCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvSmallCardView.swift; sourceTree = "<group>"; };
 		681FE3592A7A4CCD006C49E1 /* RoundedCornerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerModifier.swift; sourceTree = "<group>"; };
-		681FE35B2A7A83FA006C49E1 /* LocaleEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleEndpoint.swift; sourceTree = "<group>"; };
+		681FE35B2A7A83FA006C49E1 /* LocaleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleManager.swift; sourceTree = "<group>"; };
 		681FE35D2A7B964E006C49E1 /* JSONDecoderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoderExtension.swift; sourceTree = "<group>"; };
 		681FE35F2A7B967F006C49E1 /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
 		681FE3612A7BD7F4006C49E1 /* EncodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtension.swift; sourceTree = "<group>"; };
@@ -401,6 +401,7 @@
 				26BCDA0F2579826700096894 /* LoggerManager.swift */,
 				72EB01A5299E39D700DF6C24 /* URLSessionAutoLogging.swift */,
 				A2180A1B2A77E4F90002391C /* KeychainManager.swift */,
+				681FE35B2A7A83FA006C49E1 /* LocaleManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -726,7 +727,6 @@
 				A280CBA62A84E67D0083A5E0 /* MovieDetailsEndpoints.swift */,
 				68E49B2A2A7907FB00DA87AB /* TvEndpoints.swift */,
 				A280CBAA2A8500960083A5E0 /* TvDetailsEndpoints.swift */,
-				681FE35B2A7A83FA006C49E1 /* LocaleEndpoint.swift */,
 				A285811D2A81821F0078EEE0 /* ActorEndpoints.swift */,
 				A280CBB72A86565D0083A5E0 /* SearchEndpoints.swift */,
 				A29AB7C42A8CC41600A7AF5D /* ProfileEndpoints.swift */,
@@ -1194,7 +1194,7 @@
 				A280CBB02A8623270083A5E0 /* SearchItemView.swift in Sources */,
 				A285811C2A816EED0078EEE0 /* ActorViewModel.swift in Sources */,
 				26BCDA2F2579859500096894 /* UIDeviceExtension.swift in Sources */,
-				681FE35C2A7A83FA006C49E1 /* LocaleEndpoint.swift in Sources */,
+				681FE35C2A7A83FA006C49E1 /* LocaleManager.swift in Sources */,
 				A24A05632A667A9700216F15 /* ErrorResponse.swift in Sources */,
 				6A7204CA2A67FFB900E60B21 /* LoginView.swift in Sources */,
 				A280CBB82A86565D0083A5E0 /* SearchEndpoints.swift in Sources */,
