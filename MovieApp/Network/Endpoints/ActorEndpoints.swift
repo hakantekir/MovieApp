@@ -15,11 +15,11 @@ enum ActorEndpoints: EndpointProtocol {
     var path: String {
         switch self {
             case .actorDetails(let actorID):
-                return (Configuration.baseURL ?? "") + "/person/" + String(actorID)
+                return (Configuration.baseURL ?? "") + "person/" + String(actorID)
             case .movies(let actorID):
-                return (Configuration.baseURL ?? "") + "/person/" + String(actorID) + "/movie_credits"
+                return (Configuration.baseURL ?? "") + "person/" + String(actorID) + "/movie_credits"
             case .series(let actorID):
-                return (Configuration.baseURL ?? "") + "/person/" + String(actorID) + "/tv_credits"
+                return (Configuration.baseURL ?? "") + "person/" + String(actorID) + "/tv_credits"
         }
     }
 }
