@@ -12,6 +12,22 @@ struct SearchItemDataModel {
     let type: MediaType
     let id: Int?
     let name: String?
-    let overview: String?
+    var overview: String?
     let imagePath: String?
+
+    init(type: MediaType, id: Int?, name: String?, imagePath: String?) {
+        self.type = type
+        self.id = id
+        self.name = name
+        self.overview = nil
+        self.imagePath = imagePath
+    }
+
+    init(type: MediaType, id: Int?, name: String?, overview: String?, imagePath: String?) {
+        self.type = type
+        self.id = id
+        self.name = name
+        self.overview = overview
+        self.imagePath = imagePath
+    }
 }

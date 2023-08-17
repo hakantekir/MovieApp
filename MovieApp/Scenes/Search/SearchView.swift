@@ -20,9 +20,8 @@ struct SearchView: View {
                         RoundedSearchField(label: L10n.searchSearchBar, text: $viewModel.query)
                     }.padding(.horizontal, 24)
                     if !viewModel.query.isEmpty {
-                        if let results = viewModel.searchResults,
-                           !results.isEmpty {
-                            searchResults(with: results)
+                        if !viewModel.searchResults.isEmpty {
+                            searchResults(with: viewModel.searchResults)
                         } else if viewModel.isLoading {
                             loadingView()
                         } else {

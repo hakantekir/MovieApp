@@ -25,7 +25,7 @@ struct QueryResult: Decodable {
     let backdropPath: String?
     let id: Int?
     let name, originalLanguage, originalName, overview: String?
-    let posterPath: String?
+    let posterPath, profilePath: String?
     let mediaType: MediaType?
     let genreIDS: [Int]?
     let popularity: Double?
@@ -44,6 +44,7 @@ struct QueryResult: Decodable {
         case originalName = "original_name"
         case overview
         case posterPath = "poster_path"
+        case profilePath = "profile_path"
         case mediaType = "media_type"
         case genreIDS = "genre_ids"
         case popularity

@@ -11,49 +11,71 @@ import Foundation
 @MainActor
 class SearchViewModel: ObservableObject {
     @Published var query: String = ""
-    @Published var searchResults: [SearchItemDataModel]?
+    @Published var searchResults: [SearchItemDataModel] = []
     @Published var isLoading: Bool = false
+    private var task: Task<Void, Never>?
 
     func fetchResults() async {
+        task?.cancel()
         isLoading = true
-        let response = try? await NetworkService.shared.request(
-            with: RequestObject(url: SearchEndpoints.multi(query: query).path),
-            responseModel: SearchQueryResponseModel.self
-        )
-        searchResults = await mapResponse(response)
-        isLoading = false
+        task = Task {
+            let response = try? await NetworkService.shared.request(
+                with: RequestObject(url: SearchEndpoints.multi(query: query).path),
+                responseModel: SearchQueryResponseModel.self
+            )
+            searchResults = await mapAndUpdateResults(response)
+            isLoading = false
+        }
     }
 
-    private func mapResponse(_ response: SearchQueryResponseModel?) async -> [SearchItemDataModel] {
-        guard let response, let results = response.results else {
+    private func mapAndUpdateResults(_ response: SearchQueryResponseModel?) async -> [SearchItemDataModel] {
+        guard let response, let responseResults = response.results else {
             return []
         }
 
+        var results = mapQueryResult(with: responseResults)
+
+        for index in results.indices {
+            if let id = results[index].id {
+                switch results[index].type {
+                    case .person:
+                        let actorDetails = await getActorDetails(actorID: id)
+                        if let birthday = actorDetails?.birthday {
+                            results[index].overview = DateFormatter.localizedDateFormatter.string(from: birthday)
+                        }
+                    case .movie:
+                        let movieDetails = await getMovieDetails(movieId: id)
+                        results[index].overview = mapCast(cast: movieDetails?.cast)
+                    case .tvSeries:
+                        let seriesDetails = await getSeriesDetails(tvID: id)
+                        results[index].overview = mapCast(cast: seriesDetails?.cast)
+                }
+            }
+        }
+
+        return results
+    }
+
+    private func mapQueryResult(with results: [QueryResult]) -> [SearchItemDataModel] {
         var mappedSearchResults: [SearchItemDataModel] = []
 
         for result in results {
             switch result.mediaType {
                 case .person:
-                let actorDetails = await getActorDetails(actorID: result.id ?? 0)
-                mappedSearchResults.append(SearchItemDataModel(type: result.mediaType ?? .movie,
-                                                               id: result.id,
-                                                               name: result.name,
-                                                               overview: DateFormatter.localizedDateFormatter.string(from: actorDetails?.birthday ?? .now),
-                                                               imagePath: (Configuration.imageURL ?? "") + (actorDetails?.profilePath ?? "")))
+                    mappedSearchResults.append(SearchItemDataModel(type: result.mediaType ?? .movie,
+                                                                   id: result.id,
+                                                                   name: result.name,
+                                                                   imagePath: (Configuration.imageURL ?? "") + (result.profilePath ?? "")))
                 case .movie:
-                let movieDetails = await getMovieDetails(movieId: result.id ?? 0)
-                mappedSearchResults.append(SearchItemDataModel(type: result.mediaType ?? .movie,
-                                                               id: result.id,
-                                                               name: result.title,
-                                                               overview: mapCast(cast: movieDetails?.cast),
-                                                               imagePath: (Configuration.imageURL ?? "") + (result.posterPath ?? "")))
+                    mappedSearchResults.append(SearchItemDataModel(type: result.mediaType ?? .movie,
+                                                                   id: result.id,
+                                                                   name: result.title,
+                                                                   imagePath: (Configuration.imageURL ?? "") + (result.posterPath ?? "")))
                 case .tvSeries:
-                let seriesDetails = await getSeriesDetails(tvID: result.id ?? 0)
-                mappedSearchResults.append(SearchItemDataModel(type: result.mediaType ?? .movie,
-                                                               id: result.id,
-                                                               name: result.name,
-                                                               overview: mapCast(cast: seriesDetails?.cast),
-                                                               imagePath: (Configuration.imageURL ?? "") + (result.posterPath ?? "")))
+                    mappedSearchResults.append(SearchItemDataModel(type: result.mediaType ?? .movie,
+                                                                   id: result.id,
+                                                                   name: result.name,
+                                                                   imagePath: (Configuration.imageURL ?? "") + (result.posterPath ?? "")))
                 case .none:
                     continue
             }
