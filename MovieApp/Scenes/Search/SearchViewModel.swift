@@ -13,18 +13,32 @@ class SearchViewModel: ObservableObject {
     @Published var query: String = ""
     @Published var searchResults: [SearchItemDataModel] = []
     @Published var isLoading: Bool = false
-    private var task: Task<Void, Never>?
+    private var task: Task<[SearchItemDataModel]?, Never>?
 
     func fetchResults() async {
         task?.cancel()
         isLoading = true
-        task = Task {
+        task = Task { () -> [SearchItemDataModel]? in
             let response = try? await NetworkService.shared.request(
                 with: RequestObject(url: SearchEndpoints.multi(query: query).path),
                 responseModel: SearchQueryResponseModel.self
             )
-            searchResults = await mapAndUpdateResults(response)
+            if Task.isCancelled {
+                return nil
+            }
+
+            let searchResults = await mapAndUpdateResults(response)
+
+            if Task.isCancelled {
+                return nil
+            }
+
             isLoading = false
+            return searchResults
+        }
+
+        if let result = await task?.value {
+            searchResults = result
         }
     }
 
