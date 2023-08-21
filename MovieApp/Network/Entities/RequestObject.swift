@@ -20,7 +20,7 @@ struct RequestObject {
          method: HTTPMethod = .get,
          headers: [String: String] = [:],
          body: Encodable? = nil) {
-        self.url = url + language
+        self.url = url
         self.language = language
         self.method = method
         self.headers = headers

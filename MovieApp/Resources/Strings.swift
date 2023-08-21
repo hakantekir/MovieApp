@@ -44,6 +44,18 @@ internal enum L10n {
   internal static let popular = L10n.tr("Localizable", "popular", fallback: "Popular")
   /// Register Now
   internal static let registerNow = L10n.tr("Localizable", "register_now", fallback: "Register Now")
+  /// Movie
+  internal static let searchMovie = L10n.tr("Localizable", "search_movie", fallback: "Movie")
+  /// Search
+  internal static let searchNavigationTitle = L10n.tr("Localizable", "search_navigationTitle", fallback: "Search")
+  /// your search didn’t have any results
+  internal static let searchNone = L10n.tr("Localizable", "search_none", fallback: "your search didn’t have any results")
+  /// Person
+  internal static let searchPerson = L10n.tr("Localizable", "search_person", fallback: "Person")
+  /// Movies or Series
+  internal static let searchSearchBar = L10n.tr("Localizable", "search_searchBar", fallback: "Movies or Series")
+  /// TV Series
+  internal static let searchSeries = L10n.tr("Localizable", "search_series", fallback: "TV Series")
   /// Choose a Photo
   internal static let selectPhoto = L10n.tr("Localizable", "select_photo", fallback: "Choose a Photo")
   /// Camera

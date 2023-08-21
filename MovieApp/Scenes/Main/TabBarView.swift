@@ -22,6 +22,11 @@ struct TabBarView: View {
                     selectedTab == 1 ? Asset.Images.tvTabIconSelected.swiftUIImage : Asset.Images.tvTabIcon.swiftUIImage
                 }
                 .tag(1)
+            SearchView()
+                .tabItem {
+                    selectedTab == 2 ? Asset.Images.searchTabIconSelected.swiftUIImage : Asset.Images.searchTabIcon.swiftUIImage
+                }
+                .tag(2)
         }
     }
 }

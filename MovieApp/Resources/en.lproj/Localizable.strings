@@ -39,3 +39,10 @@
 "actorDetails_showBio" = "See full bio >>";
 "actorDetails_hideBio" = "See less >>";
 "actorDetails_born" = "Born:";
+
+"search_movie" = "Movie";
+"search_series" = "TV Series";
+"search_person" = "Person";
+"search_navigationTitle" = "Search";
+"search_searchBar" = "Movies or Series";
+"search_none" = "your search didn’t have any results";

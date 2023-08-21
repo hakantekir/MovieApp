@@ -39,3 +39,10 @@
 "actorDetails_showBio" = "Tamamını gör >>";
 "actorDetails_hideBio" = "Daha az gör >>";
 "actorDetails_born" = "Doğum tarihi:";
+
+"search_movie" = "Film";
+"search_series" = "Dizi";
+"search_person" = "Kişi";
+"search_navigationTitle" = "Ara";
+"search_searchBar" = "Film veya Dizi";
+"search_none" = "herhangi bir sonuç bulunamadı";
