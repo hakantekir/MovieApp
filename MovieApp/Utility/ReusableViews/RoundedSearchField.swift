@@ -14,11 +14,16 @@ struct RoundedSearchField: View {
     var body: some View {
         HStack {
             Asset.Images.iconMiniSearch.swiftUIImage
-            TextField(label, text: $text)
+            TextField("",
+                      text: $text,
+                      prompt: Text(label)
+                .foregroundColor(Asset.Colors.almostBlack.swiftUIColor.opacity(0.4))
+            )
         }
         .padding(.vertical, 7)
         .padding(.horizontal, 9)
-        .background(Asset.Colors.whiteTwo.swiftUIColor)
+        .foregroundColor(Asset.Colors.almostBlack.swiftUIColor)
+        .background(Asset.Colors.white.swiftUIColor)
         .cornerRadius(8)
     }
 }

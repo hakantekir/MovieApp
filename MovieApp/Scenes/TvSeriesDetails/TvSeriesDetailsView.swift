@@ -42,6 +42,7 @@ struct TvSeriesDetailsView: View {
                 }
             }
         }
+        .background(Asset.Colors.white.swiftUIColor)
         .edgesIgnoringSafeArea(.top)
         .onAppear {
             Task {
@@ -112,6 +113,7 @@ extension TvSeriesDetailsView {
                 .background(Color(red: 57/255, green: 58/255, blue: 59/255))
                 .cornerRadius(12)
         }
+        .foregroundColor(Asset.Colors.almostBlack.swiftUIColor)
         .padding(.horizontal, 24)
     }
 

@@ -28,6 +28,7 @@ struct MoviesView: View {
                                 .padding(.bottom, 20.0)
                             Text(L10n.popular)
                                 .font(.system(size: 22).bold())
+                                .foregroundColor(Asset.Colors.almostBlack.swiftUIColor)
                             ForEach(viewModel.popularMovies?.results ?? [], id: \.id) { movie in
                                 MediaListItemView(media: movie)
                                     .padding(.bottom, 20)

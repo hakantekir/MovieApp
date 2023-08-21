@@ -37,6 +37,7 @@ struct ActorView: View {
                 }
             }
         }
+        .background(Asset.Colors.white.swiftUIColor)
         .edgesIgnoringSafeArea(.top)
         .onAppear {
             Task {
@@ -88,7 +89,6 @@ extension ActorView {
                 Text(viewModel.actorDetails?.bornText ?? "")
             }
             .font(.system(size: 17))
-
         }
         .foregroundColor(Asset.Colors.almostBlack.swiftUIColor)
         .padding(.horizontal, 24)

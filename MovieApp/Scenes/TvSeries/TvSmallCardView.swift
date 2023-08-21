@@ -50,6 +50,7 @@ extension TvSmallCardView {
         VStack(alignment: .leading) {
             Text(tvSeries.title ?? "")
                 .font(.system(size: 18).bold())
+                .foregroundColor(Asset.Colors.almostBlack.swiftUIColor)
                 .lineLimit(1)
             HStack {
                 MediaVoteView(vote: tvSeries.voteAverage ?? 0.0)

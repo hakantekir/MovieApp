@@ -57,5 +57,6 @@ extension TvMediaCardView {
             Text(tvSeries.genreNames)
                 .font(.system(size: 15))
         }
+        .foregroundColor(Asset.Colors.almostBlack.swiftUIColor)
     }
 }

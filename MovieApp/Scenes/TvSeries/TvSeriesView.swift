@@ -28,6 +28,7 @@ struct TvSeriesView: View {
                                 .padding(.bottom, 20)
                             Text(L10n.tvSeriesTopRated)
                                 .font(.system(size: 22).bold())
+                                .foregroundColor(Asset.Colors.almostBlack.swiftUIColor)
                             TvSmallCardView(tvSeriesCollection: viewModel.topRatedTvSeries?.tvSeries ?? [])
                         }
                         .padding(24)
