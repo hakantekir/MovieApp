@@ -15,7 +15,12 @@ class LoginViewModel: ObservableObject {
     @Published var presentAlert: Bool = false
     @Published var alertMessage = ""
     @Published var showMoviesView: Bool = false
-    var requestToken: AuthenticationTokenResponseModel?
+    private var mainViewModel: MainViewModel?
+    private var requestToken: AuthenticationTokenResponseModel?
+
+    func setupMainViewModel(_ mainViewModel: MainViewModel) {
+        self.mainViewModel = mainViewModel
+    }
 
     func getRequestToken() async throws {
         requestToken = try await NetworkService.shared.request(with: RequestObject(
@@ -40,9 +45,10 @@ class LoginViewModel: ObservableObject {
                 throw NetworkError.customError(0, "Unknown error!")
             }
 
-            if saveSessionId(with: sessionId) {
-                showMoviesView = true
+            guard saveSessionId(with: sessionId) else {
+                throw NetworkError.customError(0, "Unknown error!")
             }
+            mainViewModel?.updateLoginState()
         } catch {
             guard let error = error as? NetworkError, let message = error.response?.message else {
                 alertMessage = "Unknown error!"

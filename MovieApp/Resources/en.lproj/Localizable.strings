@@ -49,3 +49,4 @@
 
 "profile_navigationTitle" = "Profile";
 "profile_hello" = "Hello 👋";
+"profile_error" = "Unknown Error";

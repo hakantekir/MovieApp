@@ -11,7 +11,13 @@ import Foundation
 @MainActor
 class ProfileViewModel: ObservableObject {
     @Published var user: ProfileDetailsResponseModel?
+    @Published var presentAlert = false
     private var sessionId: String = ""
+    private var mainViewModel: MainViewModel?
+
+    func setupMainViewModel(_ mainViewModel: MainViewModel) {
+        self.mainViewModel = mainViewModel
+    }
 
     func fetchUser() async {
         guard let sessionId = KeychainManager.shared.load(key: "SessionID") else {
@@ -30,11 +36,11 @@ class ProfileViewModel: ObservableObject {
             let response = try await deleteSession()
             if response.success ?? false {
                 if deleteSessionIdFromKeychain() {
-                    print("Success")
+                    mainViewModel?.updateLoginState()
                 }
             }
         } catch {
-            print(error)
+            presentAlert = true
         }
     }
 

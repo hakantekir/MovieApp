@@ -10,46 +10,45 @@ import SwiftUI
 
 struct LoginView: View {
     @ObservedObject private var viewModel = LoginViewModel()
+    @EnvironmentObject private var mainViewModel: MainViewModel
     @State private var presentForgotWebView: Bool = false
     @State private var presentRegisterWebView: Bool = false
 
     var body: some View {
-        if viewModel.showMoviesView {
-            TabBarView()
-        } else {
-            ScrollView(showsIndicators: false) {
-                ScrollViewReader { reader in
-                    ZStack {
-                        Asset.Images.loginBackground.swiftUIImage
-                            .resizable()
-                            .scaledToFill()
+        ScrollView(showsIndicators: false) {
+            ScrollViewReader { reader in
+                ZStack {
+                    Asset.Images.loginBackground.swiftUIImage
+                        .resizable()
+                        .scaledToFill()
 
-                        VStack {
-                            Asset.Images.launchIcon.swiftUIImage
-                                .padding(.bottom, 91.0)
+                    VStack {
+                        Asset.Images.launchIcon.swiftUIImage
+                            .padding(.bottom, 91.0)
 
-                            loginTextFields(reader: reader)
+                        loginTextFields(reader: reader)
 
-                            loginButtons()
-                                .id(1)
-                        }
-                        .padding(.horizontal, 24)
+                        loginButtons()
+                            .id(1)
+                    }
+                    .padding(.horizontal, 24)
 
-                        if viewModel.presentAlert {
-                            customAlert(reader: reader)
-                        }
+                    if viewModel.presentAlert {
+                        customAlert(reader: reader)
                     }
                 }
             }
-            .ignoresSafeArea(.container)
-            .background(Asset.Colors.vibrantBlue.swiftUIColor)
-            .scrollDismissesKeyboard(.interactively)
-            .onAppear {
-                Task {
-                    try await self.viewModel.getRequestToken()
-                }
+        }
+        .ignoresSafeArea(.container)
+        .background(Asset.Colors.vibrantBlue.swiftUIColor)
+        .scrollDismissesKeyboard(.interactively)
+        .onAppear {
+            Task {
+                viewModel.setupMainViewModel(mainViewModel)
+                try await self.viewModel.getRequestToken()
             }
         }
+
     }
 }
 
@@ -151,10 +150,10 @@ extension LoginView {
 
     private func customAlert(reader: ScrollViewProxy) -> some View {
         CustomAlert(message: viewModel.alertMessage, buttonLabel: "Okey") {
-                withAnimation(.easeIn(duration: 0.5)) {
-                    viewModel.presentAlert.toggle()
-                }
+            withAnimation(.easeIn(duration: 0.5)) {
+                viewModel.presentAlert.toggle()
             }
+        }
         .onAppear {
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             withAnimation {

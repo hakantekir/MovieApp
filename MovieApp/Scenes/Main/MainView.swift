@@ -10,22 +10,25 @@ import SwiftUI
 
 struct MainView: View {
     @State var isActive = false
-    @ObservedObject var viewModel = MainViewModel()
+    @StateObject var viewModel = MainViewModel()
     var body: some View {
-         if isActive {
-            if viewModel.isLoggedIn() {
-                TabBarView()
+        Group {
+            if isActive {
+                switch viewModel.loginState {
+                    case .login:
+                        TabBarView()
+                    case .logout:
+                        LoginView()
+                }
             } else {
-                LoginView()
+                LaunchView()
+                    .onAppear {
+                        withAnimation(.easeIn(duration: 1).delay(1)) {
+                            isActive = true
+                        }
+                    }
             }
-         } else {
-             LaunchView()
-                 .onAppear {
-                     withAnimation(.easeIn(duration: 1).delay(1)) {
-                         isActive = true
-                     }
-                 }
-         }
+        }.environmentObject(viewModel)
     }
 }
 

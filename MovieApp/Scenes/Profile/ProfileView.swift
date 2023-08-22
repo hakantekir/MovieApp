@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ProfileView: View {
     @StateObject var viewModel = ProfileViewModel()
+    @EnvironmentObject var mainViewModel: MainViewModel
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -19,6 +21,9 @@ struct ProfileView: View {
                     // TODO: Favorite Medias
 
                     Spacer()
+                }
+                if viewModel.presentAlert {
+                    customAlert()
                 }
             }
             .navigationTitle(L10n.profileNavigationTitle)
@@ -38,6 +43,9 @@ struct ProfileView: View {
                     }
                 }
             }
+        }
+        .onAppear {
+            viewModel.setupMainViewModel(mainViewModel)
         }
     }
 }
@@ -65,6 +73,14 @@ extension ProfileView {
                 Task {
                     await viewModel.fetchUser()
                 }
+            }
+        }
+    }
+
+    private func customAlert() -> some View {
+        CustomAlert(message: L10n.profileError, buttonLabel: "Okey") {
+            withAnimation(.easeIn(duration: 0.5)) {
+                viewModel.presentAlert.toggle()
             }
         }
     }
