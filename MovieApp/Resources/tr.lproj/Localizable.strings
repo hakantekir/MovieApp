@@ -46,3 +46,7 @@
 "search_navigationTitle" = "Ara";
 "search_searchBar" = "Film veya Dizi";
 "search_none" = "herhangi bir sonuç bulunamadı";
+
+"profile_navigationTitle" = "Profil";
+"profile_hello" = "Merhaba 👋";
+"profile_error" = "Bilinmeyen Hata";

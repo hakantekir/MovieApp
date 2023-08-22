@@ -9,8 +9,23 @@
 import Foundation
 
 class MainViewModel: ObservableObject {
+    @Published
+    var loginState: UserLoginState = .logout
 
-    func isLoggedIn() -> Bool {
-        KeychainManager.shared.load(key: "SessionID") != nil
+    init() {
+        loginState = KeychainManager.shared.load(key: "SessionID") != nil ? .login : .logout
+    }
+
+    func updateLoginState() {
+        if KeychainManager.shared.load(key: "SessionID") != nil {
+            loginState = .login
+        } else {
+            loginState = .logout
+        }
+    }
+
+    enum UserLoginState {
+        case login
+        case logout
     }
 }

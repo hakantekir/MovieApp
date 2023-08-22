@@ -46,3 +46,7 @@
 "search_navigationTitle" = "Search";
 "search_searchBar" = "Movies or Series";
 "search_none" = "your search didn’t have any results";
+
+"profile_navigationTitle" = "Profile";
+"profile_hello" = "Hello 👋";
+"profile_error" = "Unknown Error";

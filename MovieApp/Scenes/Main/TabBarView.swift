@@ -27,6 +27,11 @@ struct TabBarView: View {
                     selectedTab == 2 ? Asset.Images.searchTabIconSelected.swiftUIImage : Asset.Images.searchTabIcon.swiftUIImage
                 }
                 .tag(2)
+            ProfileView()
+                .tabItem {
+                    selectedTab == 3 ? Asset.Images.profileTabIconSelected.swiftUIImage : Asset.Images.profileTabIcon.swiftUIImage
+                }
+                .tag(3)
         }
     }
 }
