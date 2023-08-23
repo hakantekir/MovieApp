@@ -21,9 +21,9 @@ enum MovieEndpoints: EndpointProtocol {
             case .popular:
                 return (Configuration.baseURL ?? "") + "movie/popular"
             case .genres:
-                return (Configuration.baseURL ?? "") + "/genre/movie/list"
+                return (Configuration.baseURL ?? "") + "genre/movie/list"
             case .movieDetails(let movieID):
-            return (Configuration.baseURL ?? "") + "/movie/" + String(movieID)
+                return (Configuration.baseURL ?? "") + "movie/" + String(movieID)
         }
     }
 }

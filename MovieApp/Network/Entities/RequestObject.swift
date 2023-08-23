@@ -16,7 +16,7 @@ struct RequestObject {
     var body: Encodable?
 
     init(url: String,
-         language: String = LocaleEndpoint.deviceLanguage.path,
+         language: String = LocaleManager.currentDeviceLanguage,
          method: HTTPMethod = .get,
          headers: [String: String] = [:],
          body: Encodable? = nil) {

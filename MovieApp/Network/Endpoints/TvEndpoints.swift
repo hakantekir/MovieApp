@@ -16,13 +16,13 @@ enum TvEndpoints: EndpointProtocol {
     var path: String {
         switch self {
             case .popular:
-            return (Configuration.baseURL ?? "") + "tv/popular"
+                return (Configuration.baseURL ?? "") + "tv/popular"
             case .topRated:
                 return (Configuration.baseURL ?? "") + "tv/top_rated"
             case .genres:
-                return (Configuration.baseURL ?? "") + "/genre/tv/list"
+                return (Configuration.baseURL ?? "") + "genre/tv/list"
             case .tvDetails(let tvID):
-            return (Configuration.baseURL ?? "") + "/tv/" + String(tvID)
+                return (Configuration.baseURL ?? "") + "tv/" + String(tvID)
         }
     }
 }

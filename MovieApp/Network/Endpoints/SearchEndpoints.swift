@@ -19,11 +19,11 @@ enum SearchEndpoints: EndpointProtocol {
             case .multi(let query):
                 return ((Configuration.baseURL ?? "") + "search/multi?query=" + query).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
             case .movieCast(let movieID):
-                return (Configuration.baseURL ?? "") + "/movie/" + String(movieID) + "/credits"
+                return (Configuration.baseURL ?? "") + "movie/" + String(movieID) + "/credits"
             case .tvCast(let tvID):
-                return (Configuration.baseURL ?? "") + "/tv/" + String(tvID) + "/credits"
+                return (Configuration.baseURL ?? "") + "tv/" + String(tvID) + "/credits"
             case .actorDetails(let actorID):
-                return (Configuration.baseURL ?? "") + "/person/" + String(actorID)
+                return (Configuration.baseURL ?? "") + "person/" + String(actorID)
         }
     }
 }
