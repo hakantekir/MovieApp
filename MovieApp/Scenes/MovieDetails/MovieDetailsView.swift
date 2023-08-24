@@ -46,6 +46,7 @@ struct MovieDetailsView: View {
                 }
             }
         }
+        .background(Asset.Colors.white.swiftUIColor)
         .edgesIgnoringSafeArea(.top)
     }
 }
@@ -105,7 +106,9 @@ extension MovieDetailsView {
                 .font(.system(size: 17))
                 .padding(.bottom, 25)
                 .lineSpacing(7)
-        }.padding(.horizontal, 24)
+        }
+        .foregroundColor(Asset.Colors.almostBlack.swiftUIColor)
+        .padding(.horizontal, 24)
     }
 
     private func cast() -> some View {
