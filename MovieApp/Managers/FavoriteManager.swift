@@ -66,20 +66,22 @@ class FavoriteManager {
         }
     }
 
-    func favoriteMovies() async throws {
+    func favoriteMovies() async throws -> FavoriteMoviesResponseModel {
         let sessionId = try getSessionId()
         let response = try await NetworkService.shared.request(
             with: RequestObject(url: FavoriteEndpoints.movies(sessionId: sessionId).path),
-            responseModel: String.self
+            responseModel: FavoriteMoviesResponseModel.self
         )
+        return response
     }
 
-    func favoriteSeries() async throws {
+    func favoriteSeries() async throws -> FavoriteSeriesResponseModel {
         let sessionId = try getSessionId()
         let response = try await NetworkService.shared.request(
             with: RequestObject(url: FavoriteEndpoints.series(sessionId: sessionId).path),
-            responseModel: String.self
+            responseModel: FavoriteSeriesResponseModel.self
         )
+        return response
     }
 
     private func getSessionId() throws -> String {

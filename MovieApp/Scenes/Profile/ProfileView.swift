@@ -46,6 +46,9 @@ struct ProfileView: View {
         }
         .onAppear {
             viewModel.setupMainViewModel(mainViewModel)
+            Task {
+                await viewModel.fetchMedias()
+            }
         }
     }
 }

@@ -12,6 +12,8 @@ import Foundation
 class ProfileViewModel: ObservableObject {
     @Published var user: ProfileDetailsResponseModel?
     @Published var presentAlert = false
+    @Published var favoriteMovies: FavoriteMoviesResponseModel?
+    @Published var favoriteSeries: FavoriteSeriesResponseModel?
     private var sessionId: String = ""
     private var mainViewModel: MainViewModel?
 
@@ -29,6 +31,11 @@ class ProfileViewModel: ObservableObject {
             with: RequestObject(url: ProfileEndpoints.details(sessionId: sessionId).path),
             responseModel: ProfileDetailsResponseModel.self
         )
+    }
+
+    func fetchMedias() async {
+        favoriteMovies = try? await FavoriteManager.shared.favoriteMovies()
+        favoriteSeries = try? await FavoriteManager.shared.favoriteSeries()
     }
 
     func logout() async {
