@@ -17,13 +17,13 @@ enum MovieEndpoints: EndpointProtocol {
     var path: String {
         switch self {
             case .nowPlaying:
-                return (Configuration.baseURL ?? "") + "movie/now_playing"
+                return URLManager.base(path: "movie/now_playing").url
             case .popular:
-                return (Configuration.baseURL ?? "") + "movie/popular"
+                return URLManager.base(path: "movie/popular").url
             case .genres:
-                return (Configuration.baseURL ?? "") + "genre/movie/list"
+                return URLManager.base(path: "genre/movie/list").url
             case .movieDetails(let movieID):
-                return (Configuration.baseURL ?? "") + "movie/" + String(movieID)
+                return URLManager.base(path: "movie/\(movieID)").url
         }
     }
 }

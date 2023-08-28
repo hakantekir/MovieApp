@@ -17,13 +17,14 @@ enum SearchEndpoints: EndpointProtocol {
     var path: String {
         switch self {
             case .multi(let query):
-                return ((Configuration.baseURL ?? "") + "search/multi?query=" + query).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                return URLManager.base(path: "search/multi?query=\(query)").url
+                    .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
             case .movieCast(let movieID):
-                return (Configuration.baseURL ?? "") + "movie/" + String(movieID) + "/credits"
+                return URLManager.base(path: "movie/\(movieID)/credits").url
             case .tvCast(let tvID):
-                return (Configuration.baseURL ?? "") + "tv/" + String(tvID) + "/credits"
+                return URLManager.base(path: "tv/\(tvID)/credits").url
             case .actorDetails(let actorID):
-                return (Configuration.baseURL ?? "") + "person/" + String(actorID)
+                return URLManager.base(path: "person/\(actorID)").url
         }
     }
 }

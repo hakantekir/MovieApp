@@ -149,6 +149,7 @@
 		A29AB7C82A8CC56100A7AF5D /* ProfileDetailsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29AB7C72A8CC56100A7AF5D /* ProfileDetailsResponseModel.swift */; };
 		A29AB7CB2A8CC7B000A7AF5D /* LogoutRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29AB7CA2A8CC7B000A7AF5D /* LogoutRequestModel.swift */; };
 		A29AB7CD2A8CC99C00A7AF5D /* LogoutResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29AB7CC2A8CC99C00A7AF5D /* LogoutResponseModel.swift */; };
+		A2A58B822A9CA6820089C309 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A58B812A9CA6820089C309 /* URLManager.swift */; };
 		A2BA080B2A724F20004C796D /* ConfigurationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BA080A2A724F20004C796D /* ConfigurationExtension.swift */; };
 		A2BA080C2A725292004C796D /* Development.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 2FCDE1292566444C00203445 /* Development.xcconfig */; };
 		A2BA080D2A725299004C796D /* Production.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 2FCDE134256651EF00203445 /* Production.xcconfig */; };
@@ -303,6 +304,7 @@
 		A29AB7C72A8CC56100A7AF5D /* ProfileDetailsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsResponseModel.swift; sourceTree = "<group>"; };
 		A29AB7CA2A8CC7B000A7AF5D /* LogoutRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutRequestModel.swift; sourceTree = "<group>"; };
 		A29AB7CC2A8CC99C00A7AF5D /* LogoutResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutResponseModel.swift; sourceTree = "<group>"; };
+		A2A58B812A9CA6820089C309 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
 		A2BA080A2A724F20004C796D /* ConfigurationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationExtension.swift; sourceTree = "<group>"; };
 		A2C6A0272A6EA611009B817A /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		A2C6A0292A6EAD4C009B817A /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 				72EB01A5299E39D700DF6C24 /* URLSessionAutoLogging.swift */,
 				A2180A1B2A77E4F90002391C /* KeychainManager.swift */,
 				681FE35B2A7A83FA006C49E1 /* LocaleManager.swift */,
+				A2A58B812A9CA6820089C309 /* URLManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1203,6 +1206,7 @@
 				18CADB3828A93B4F007FC2C8 /* HomeView.swift in Sources */,
 				A2E0926F2A729674004F714D /* MovieEndpoints.swift in Sources */,
 				A24A05592A66726A00216F15 /* HTTPStatus.swift in Sources */,
+				A2A58B822A9CA6820089C309 /* URLManager.swift in Sources */,
 				A2180A1C2A77E4F90002391C /* KeychainManager.swift in Sources */,
 				681FE3582A7A464A006C49E1 /* TvSmallCardView.swift in Sources */,
 				A2E092662A728B53004F714D /* NowPlayingMoviesModel.swift in Sources */,

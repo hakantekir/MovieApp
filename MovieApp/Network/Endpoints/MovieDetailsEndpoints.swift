@@ -15,9 +15,9 @@ enum MovieDetailsEndpoints: EndpointProtocol {
     var path: String {
         switch self {
             case .details(let movieID):
-                return (Configuration.baseURL ?? "") + "movie/" + String(movieID)
+                return URLManager.base(path: "movie/\(movieID)").url
             case .credits(let movieID):
-                return (Configuration.baseURL ?? "") + "movie/" + String(movieID) + "/credits"
+                return URLManager.base(path: "movie/\(movieID)/credits").url
         }
     }
 }

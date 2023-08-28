@@ -15,9 +15,9 @@ enum ProfileEndpoints: EndpointProtocol {
     var path: String {
         switch self {
             case .details(let sessionId):
-                return (Configuration.baseURL ?? "") + "account/session_id=" + sessionId
+                return URLManager.base(path: "account/session_id=\(sessionId)").url
             case .deleteSession:
-                return (Configuration.baseURL ?? "") + "authentication/session"
+                return URLManager.base(path: "authentication/session").url
         }
     }
 }
