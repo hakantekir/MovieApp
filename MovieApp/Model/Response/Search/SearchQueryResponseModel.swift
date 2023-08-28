@@ -58,9 +58,3 @@ struct QueryResult: Decodable {
         case video
     }
 }
-
-enum MediaType: String, Decodable {
-    case movie = "movie"
-    case tvSeries = "tv"
-    case person = "person"
-}

@@ -40,6 +40,16 @@ struct TvSeriesDetailsView: View {
                             .foregroundColor(Asset.Colors.white.swiftUIColor)
                     }
                 }
+
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        Task {
+                            await viewModel.updateFavorite()
+                        }
+                    } label: {
+                        MediaFavoriteView(heartColor: viewModel.tvSeriesState?.favorite ?? false ? .red : .white)
+                    }
+                }
             }
         }
         .background(Asset.Colors.white.swiftUIColor)
@@ -48,6 +58,7 @@ struct TvSeriesDetailsView: View {
             Task {
                 await viewModel.fetchTvSeriesDetails()
                 await viewModel.fetchCredits()
+                await viewModel.fetchTvSeriesState()
             }
         }
     }
@@ -100,6 +111,14 @@ extension TvSeriesDetailsView {
 
                 Spacer()
             }
+
+            MediaInteractionView(rating: $viewModel.rating,
+                                 shareURL: "https://www.themoviedb.org") { rating in
+                Task {
+                    await viewModel.updateRating(rating: rating)
+                }
+            }
+            .padding(.vertical, 18.0)
 
             Text(viewModel.tvSeriesDetails?.overview ?? "")
                 .font(.system(size: 17))

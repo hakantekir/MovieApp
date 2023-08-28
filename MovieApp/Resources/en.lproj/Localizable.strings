@@ -50,3 +50,6 @@
 "profile_navigationTitle" = "Profile";
 "profile_hello" = "Hello 👋";
 "profile_error" = "Unknown Error";
+
+"media_rate" = "Rate";
+"media_share" = "Share";

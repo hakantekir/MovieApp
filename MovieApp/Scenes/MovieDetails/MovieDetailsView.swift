@@ -31,6 +31,7 @@ struct MovieDetailsView: View {
                     Task {
                         await viewModel.fetchMovieDetails()
                         await viewModel.fetchCredits()
+                        await viewModel.fetchMovieState()
                     }
                 }
             }
@@ -42,6 +43,16 @@ struct MovieDetailsView: View {
                     } label: {
                         Image(systemName: "arrow.left")
                             .foregroundColor(Asset.Colors.white.swiftUIColor)
+                    }
+                }
+
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        Task {
+                            await viewModel.updateFavorite()
+                        }
+                    } label: {
+                        MediaFavoriteView(heartColor: viewModel.movieState?.favorite ?? false ? .red : .white)
                     }
                 }
             }
@@ -98,6 +109,13 @@ extension MovieDetailsView {
 
                 Spacer()
             }
+            MediaInteractionView(rating: $viewModel.rating,
+                                 shareURL: "https://www.themoviedb.org") { rating in
+                Task {
+                    await viewModel.updateRating(rating: rating)
+                }
+            }
+            .padding(.top, 18.0)
 
             Divider()
                 .padding(.vertical, 20)

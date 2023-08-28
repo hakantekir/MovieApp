@@ -50,3 +50,6 @@
 "profile_navigationTitle" = "Profil";
 "profile_hello" = "Merhaba 👋";
 "profile_error" = "Bilinmeyen Hata";
+
+"media_rate" = "Değerlendir";
+"media_share" = "Paylaş";
