@@ -10,7 +10,7 @@ import Foundation
 
 enum URLManager {
     case base(path: String)
-    case image(imagePath: String)
+    case image(imagePath: String?)
     case register
     case resetPassword
 
@@ -18,8 +18,8 @@ enum URLManager {
         switch self {
             case .base(let path):
                 return "\(Configuration.baseURL ?? "")\(path)"
-            case .image(imagePath: let imagePath):
-                return "\(Configuration.imageURL ?? "")\(imagePath)"
+            case .image(let imagePath):
+                return "\(Configuration.imageURL ?? "")\(imagePath ?? "")"
             case .register:
                 return "\(Configuration.registerURL ?? "")"
             case .resetPassword:

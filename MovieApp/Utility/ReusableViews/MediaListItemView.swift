@@ -15,7 +15,7 @@ struct MediaListItemView: View {
             MovieDetailsView(id: media.id ?? 0)
         } label: {
             HStack {
-                AsyncImage(url: URL(string: (Configuration.imageURL ?? "") + (media.posterPath ?? "")),
+                AsyncImage(url: URL(string: URLManager.image(imagePath: media.posterPath).url),
                            content: { image in
                     image
                         .resizable()

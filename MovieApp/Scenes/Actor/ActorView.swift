@@ -51,7 +51,7 @@ struct ActorView: View {
 extension ActorView {
     private func profileImage(reader: GeometryProxy) -> some View {
         ZStack(alignment: .top) {
-            AsyncImage(url: URL(string: (Configuration.imageURL ?? "") + (viewModel.actorDetails?.profilePath ?? "")),
+            AsyncImage(url: URL(string: URLManager.image(imagePath: viewModel.actorDetails?.profilePath).url),
                        content: { image in
                 image
                     .resizable()

@@ -17,7 +17,7 @@ struct ActorItemView: View {
             ActorView(actorID: id)
         } label: {
             VStack {
-                AsyncImage(url: URL(string: (Configuration.imageURL ?? "") + imagePath)) { image in
+                AsyncImage(url: URL(string: URLManager.image(imagePath: imagePath).url)) { image in
                     image
                         .resizable()
                 } placeholder: {

@@ -18,7 +18,7 @@ struct MediaCardView: View {
                             NavigationLink {
                                 MovieDetailsView(id: movie.id ?? 0)
                             } label: {
-                                AsyncImage(url: URL(string: (Configuration.imageURL ?? "") + (movie.posterPath ?? "")),
+                                AsyncImage(url: URL(string: URLManager.image(imagePath: movie.posterPath).url),
                                            content: { image in
                                     image
                                         .resizable()

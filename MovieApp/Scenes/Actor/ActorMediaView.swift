@@ -19,7 +19,7 @@ struct ActorMediaView: View {
             }
         } label: {
             HStack {
-                AsyncImage(url: URL(string: (Configuration.imageURL ?? "") + (media.path ?? "")),
+                AsyncImage(url: URL(string: URLManager.image(imagePath: media.path).url),
                            content: { image in
                     image
                         .resizable()

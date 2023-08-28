@@ -56,7 +56,7 @@ struct TvSeriesDetailsView: View {
 extension TvSeriesDetailsView {
     private func posterImage(reader: GeometryProxy) -> some View {
         ZStack(alignment: .top) {
-            AsyncImage(url: URL(string: (Configuration.imageURL ?? "") + (viewModel.tvSeriesDetails?.posterPath ?? "")),
+            AsyncImage(url: URL(string: URLManager.image(imagePath: viewModel.tvSeriesDetails?.posterPath).url),
                        content: { image in
                 image
                     .resizable()

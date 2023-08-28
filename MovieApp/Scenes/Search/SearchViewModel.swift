@@ -79,17 +79,17 @@ class SearchViewModel: ObservableObject {
                     mappedSearchResults.append(SearchItemDataModel(type: result.mediaType ?? .movie,
                                                                    id: result.id,
                                                                    name: result.name,
-                                                                   imagePath: (Configuration.imageURL ?? "") + (result.profilePath ?? "")))
+                                                                   imagePath: URLManager.image(imagePath: result.profilePath).url))
                 case .movie:
                     mappedSearchResults.append(SearchItemDataModel(type: result.mediaType ?? .movie,
                                                                    id: result.id,
                                                                    name: result.title,
-                                                                   imagePath: (Configuration.imageURL ?? "") + (result.posterPath ?? "")))
+                                                                   imagePath: URLManager.image(imagePath: result.posterPath).url))
                 case .tvSeries:
                     mappedSearchResults.append(SearchItemDataModel(type: result.mediaType ?? .movie,
                                                                    id: result.id,
                                                                    name: result.name,
-                                                                   imagePath: (Configuration.imageURL ?? "") + (result.posterPath ?? "")))
+                                                                   imagePath: URLManager.image(imagePath: result.posterPath).url))
                 case .none:
                     continue
             }

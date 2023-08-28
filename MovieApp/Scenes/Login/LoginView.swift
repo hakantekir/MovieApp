@@ -100,8 +100,7 @@ extension LoginView {
                 .padding(.bottom, 48.0)
                 .sheet(isPresented: $presentForgotWebView) {
                     NavigationStack {
-                        if let resetPasswordString = Configuration.resetPasswordURL,
-                           let resetPasswordURL = URL(string: resetPasswordString) {
+                        if let resetPasswordURL = URL(string: URLManager.resetPassword.url) {
                             WebView(url: resetPasswordURL)
                                 .navigationTitle(L10n.forgotPassword)
                                 .navigationBarTitleDisplayMode(.inline)
@@ -133,8 +132,7 @@ extension LoginView {
                 .font(.system(size: 12))
                 .sheet(isPresented: $presentRegisterWebView) {
                     NavigationStack {
-                        if let registerString = Configuration.registerURL,
-                           let registerURL = URL(string: registerString) {
+                        if let registerURL = URL(string: URLManager.register.url) {
                             WebView(url: registerURL)
                                 .navigationTitle(L10n.registerNow)
                                 .navigationBarTitleDisplayMode(.inline)

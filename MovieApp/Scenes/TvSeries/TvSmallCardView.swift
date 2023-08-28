@@ -35,7 +35,7 @@ struct TvSmallCardView: View {
 
 extension TvSmallCardView {
     private func posterImage(tvSeries: TvModel) -> some View {
-        AsyncImage(url: URL(string: (Configuration.imageURL ?? "") + (tvSeries.posterPath ?? "")),
+        AsyncImage(url: URL(string: URLManager.image(imagePath: tvSeries.posterPath).url),
                    content: { image in
             image
                 .resizable()
